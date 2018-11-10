@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configurations\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Persistence\Configurations\" />
+    <Folder Include="Persistence\Migrations\" />
   </ItemGroup>
 
 </Project>

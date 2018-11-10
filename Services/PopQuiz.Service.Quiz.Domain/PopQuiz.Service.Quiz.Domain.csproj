@@ -5,12 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="History\" />
-    <Folder Include="Interfaces\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Enumerations\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Proctor\" />
-    <Folder Include="Profile\" />
-    <Folder Include="Quiz\" />
+    <Folder Include="ValueObjects\" />
   </ItemGroup>
 
 </Project>
