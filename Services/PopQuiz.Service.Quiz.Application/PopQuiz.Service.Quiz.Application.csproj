@@ -6,11 +6,17 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Commands\" />
-    <Folder Include="Models\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Validators\" />
     <Folder Include="Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.0.100" />
+    <PackageReference Include="MediatR" Version="5.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PopQuiz.Service.Quiz.Application.Interfaces\PopQuiz.Service.Quiz.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\PopQuiz.Service.Quiz.Domain\PopQuiz.Service.Quiz.Domain.csproj" />
   </ItemGroup>
 
 </Project>
