@@ -3,9 +3,83 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1471B4B1-6391-42B3-8748-8C1FE455B1D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz", "Services\PopQuiz.Service.Quiz\PopQuiz.Service.Quiz.csproj", "{497E2B2B-ECB2-4E19-8A5A-A968585D79D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quiz", "Quiz", "{5A2EF8A4-CF98-4706-9012-32ADB9053D0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz.Application", "Services\PopQuiz.Service.Quiz.Application\PopQuiz.Service.Quiz.Application.csproj", "{F7EA9F2B-0593-412F-8BAF-6180784ED9A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz.Domain", "Services\PopQuiz.Service.Quiz.Domain\PopQuiz.Service.Quiz.Domain.csproj", "{04364C2F-44C1-42F6-8EB1-45FD3A50057F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz.Infrastructure", "Services\PopQuiz.Service.Quiz.Infrastructure\PopQuiz.Service.Quiz.Infrastructure.csproj", "{0BF3FC6D-8538-43E3-AE4F-BD44807A4CE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{99884F25-5B36-4471-87A3-0BFEC5557FEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz.Application.Test", "Services\PopQuiz.Service.Quiz.Application.Test\PopQuiz.Service.Quiz.Application.Test.csproj", "{8888775B-2872-4132-946A-CD5C431B3092}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz..Domain.Test", "Services\PopQuiz.Service.Quiz.Domain.Test\PopQuiz.Service.Quiz..Domain.Test.csproj", "{F471DEE1-1B86-431B-AB66-4F27C272746D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{6371AAD4-E058-4A19-B65A-5AD9FEAB1229}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Common", "Services\PopQuiz.Service.Common\PopQuiz.Service.Common.csproj", "{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Quiz.Application.Interfaces", "Services\PopQuiz.Service.Quiz.Application.Interfaces\PopQuiz.Service.Quiz.Application.Interfaces.csproj", "{56FCD8F6-E154-49B5-81E0-A19F4863C008}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{497E2B2B-ECB2-4E19-8A5A-A968585D79D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497E2B2B-ECB2-4E19-8A5A-A968585D79D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497E2B2B-ECB2-4E19-8A5A-A968585D79D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497E2B2B-ECB2-4E19-8A5A-A968585D79D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7EA9F2B-0593-412F-8BAF-6180784ED9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7EA9F2B-0593-412F-8BAF-6180784ED9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7EA9F2B-0593-412F-8BAF-6180784ED9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7EA9F2B-0593-412F-8BAF-6180784ED9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04364C2F-44C1-42F6-8EB1-45FD3A50057F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04364C2F-44C1-42F6-8EB1-45FD3A50057F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04364C2F-44C1-42F6-8EB1-45FD3A50057F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04364C2F-44C1-42F6-8EB1-45FD3A50057F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF3FC6D-8538-43E3-AE4F-BD44807A4CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF3FC6D-8538-43E3-AE4F-BD44807A4CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF3FC6D-8538-43E3-AE4F-BD44807A4CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF3FC6D-8538-43E3-AE4F-BD44807A4CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8888775B-2872-4132-946A-CD5C431B3092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8888775B-2872-4132-946A-CD5C431B3092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8888775B-2872-4132-946A-CD5C431B3092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8888775B-2872-4132-946A-CD5C431B3092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F471DEE1-1B86-431B-AB66-4F27C272746D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F471DEE1-1B86-431B-AB66-4F27C272746D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F471DEE1-1B86-431B-AB66-4F27C272746D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F471DEE1-1B86-431B-AB66-4F27C272746D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FCD8F6-E154-49B5-81E0-A19F4863C008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FCD8F6-E154-49B5-81E0-A19F4863C008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FCD8F6-E154-49B5-81E0-A19F4863C008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FCD8F6-E154-49B5-81E0-A19F4863C008}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{497E2B2B-ECB2-4E19-8A5A-A968585D79D0} = {5A2EF8A4-CF98-4706-9012-32ADB9053D0D}
+		{5A2EF8A4-CF98-4706-9012-32ADB9053D0D} = {1471B4B1-6391-42B3-8748-8C1FE455B1D0}
+		{F7EA9F2B-0593-412F-8BAF-6180784ED9A9} = {5A2EF8A4-CF98-4706-9012-32ADB9053D0D}
+		{04364C2F-44C1-42F6-8EB1-45FD3A50057F} = {5A2EF8A4-CF98-4706-9012-32ADB9053D0D}
+		{0BF3FC6D-8538-43E3-AE4F-BD44807A4CE7} = {5A2EF8A4-CF98-4706-9012-32ADB9053D0D}
+		{99884F25-5B36-4471-87A3-0BFEC5557FEC} = {5A2EF8A4-CF98-4706-9012-32ADB9053D0D}
+		{8888775B-2872-4132-946A-CD5C431B3092} = {99884F25-5B36-4471-87A3-0BFEC5557FEC}
+		{F471DEE1-1B86-431B-AB66-4F27C272746D} = {99884F25-5B36-4471-87A3-0BFEC5557FEC}
+		{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9} = {1471B4B1-6391-42B3-8748-8C1FE455B1D0}
+		{56FCD8F6-E154-49B5-81E0-A19F4863C008} = {5A2EF8A4-CF98-4706-9012-32ADB9053D0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE2597B7-0EE3-4A3C-8D4C-3CE29B5B8006}
