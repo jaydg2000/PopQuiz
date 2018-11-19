@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PopQuiz.Service.Quiz.Controllers
 {
-    public class PopQuizController : Controller
+    public abstract class PopQuizController : Controller
     {
         private IMediator mediator;
 

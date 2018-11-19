@@ -33,7 +33,7 @@ namespace PopQuiz.Service.Quiz.Infrastructure.Persistence.Repository
 
         public IEnumerable<T> GetAll()
         {
-            return entities.ToListAsync() as IEnumerable<T>;
+            return entities.ToList() as IEnumerable<T>;
         }
 
         public T Get(int id)
