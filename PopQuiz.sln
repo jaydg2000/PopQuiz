@@ -23,9 +23,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz..Domai
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{6371AAD4-E058-4A19-B65A-5AD9FEAB1229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Common", "Services\PopQuiz.Service.Common\PopQuiz.Service.Common.csproj", "{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Common", "Services\PopQuiz.Service.Common\PopQuiz.Service.Common.csproj", "{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Quiz.Application.Interfaces", "Services\PopQuiz.Service.Quiz.Application.Interfaces\PopQuiz.Service.Quiz.Application.Interfaces.csproj", "{56FCD8F6-E154-49B5-81E0-A19F4863C008}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Quiz.Application.Interfaces", "Services\PopQuiz.Service.Quiz.Application.Interfaces\PopQuiz.Service.Quiz.Application.Interfaces.csproj", "{56FCD8F6-E154-49B5-81E0-A19F4863C008}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schedule", "Schedule", "{F25CF5FA-1912-4EF8-AD95-826A099E6448}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Schedule", "Services\PopQuiz.Service.Schedule\PopQuiz.Service.Schedule.csproj", "{8B530DBB-59F9-4075-8304-303694E4F768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Schedule.Application", "Services\PopQuiz.Service.Schedule.Application\PopQuiz.Service.Schedule.Application.csproj", "{9E0CC41F-EF95-48BD-BB75-574AC7AA79E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Schedule.Application.Interfaces", "Services\PopQuiz.Service.Schedule.Application.Interfaces\PopQuiz.Service.Schedule.Application.Interfaces.csproj", "{DC7E8A90-4D36-49E2-A4B5-06201D84E567}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Schedule.Domain", "Services\PopQuiz.Service.Schedule.Domain\PopQuiz.Service.Schedule.Domain.csproj", "{5565315D-C5A1-4D84-8038-8E0BDBD127CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Schedule.Infrastructure", "Services\PopQuiz.Service.Quiz.Application.Interfaces\PopQuiz.Service.Schedule.Infrastructure\PopQuiz.Service.Schedule.Infrastructure.csproj", "{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +77,26 @@ Global
 		{56FCD8F6-E154-49B5-81E0-A19F4863C008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56FCD8F6-E154-49B5-81E0-A19F4863C008}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56FCD8F6-E154-49B5-81E0-A19F4863C008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B530DBB-59F9-4075-8304-303694E4F768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B530DBB-59F9-4075-8304-303694E4F768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B530DBB-59F9-4075-8304-303694E4F768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B530DBB-59F9-4075-8304-303694E4F768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E0CC41F-EF95-48BD-BB75-574AC7AA79E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0CC41F-EF95-48BD-BB75-574AC7AA79E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0CC41F-EF95-48BD-BB75-574AC7AA79E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0CC41F-EF95-48BD-BB75-574AC7AA79E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7E8A90-4D36-49E2-A4B5-06201D84E567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7E8A90-4D36-49E2-A4B5-06201D84E567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7E8A90-4D36-49E2-A4B5-06201D84E567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7E8A90-4D36-49E2-A4B5-06201D84E567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5565315D-C5A1-4D84-8038-8E0BDBD127CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5565315D-C5A1-4D84-8038-8E0BDBD127CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5565315D-C5A1-4D84-8038-8E0BDBD127CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5565315D-C5A1-4D84-8038-8E0BDBD127CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +112,12 @@ Global
 		{F471DEE1-1B86-431B-AB66-4F27C272746D} = {99884F25-5B36-4471-87A3-0BFEC5557FEC}
 		{6FFDAC23-0E0A-42AF-9ED5-7D1CE897E0A9} = {1471B4B1-6391-42B3-8748-8C1FE455B1D0}
 		{56FCD8F6-E154-49B5-81E0-A19F4863C008} = {5A2EF8A4-CF98-4706-9012-32ADB9053D0D}
+		{F25CF5FA-1912-4EF8-AD95-826A099E6448} = {1471B4B1-6391-42B3-8748-8C1FE455B1D0}
+		{8B530DBB-59F9-4075-8304-303694E4F768} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
+		{9E0CC41F-EF95-48BD-BB75-574AC7AA79E0} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
+		{DC7E8A90-4D36-49E2-A4B5-06201D84E567} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
+		{5565315D-C5A1-4D84-8038-8E0BDBD127CF} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
+		{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE2597B7-0EE3-4A3C-8D4C-3CE29B5B8006}
