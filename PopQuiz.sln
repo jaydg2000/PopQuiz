@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Schedule.Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Schedule.Infrastructure", "Services\PopQuiz.Service.Quiz.Application.Interfaces\PopQuiz.Service.Schedule.Infrastructure\PopQuiz.Service.Schedule.Infrastructure.csproj", "{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{630A3F28-9E95-498A-B07B-341DD9594DB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,7 @@ Global
 		{DC7E8A90-4D36-49E2-A4B5-06201D84E567} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
 		{5565315D-C5A1-4D84-8038-8E0BDBD127CF} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
 		{4A1DAFBE-50BE-44BD-B1A5-56ABCF06323B} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
+		{630A3F28-9E95-498A-B07B-341DD9594DB9} = {F25CF5FA-1912-4EF8-AD95-826A099E6448}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE2597B7-0EE3-4A3C-8D4C-3CE29B5B8006}
