@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Commands\UpdateQuestion\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PopQuiz.Service.Quiz.Application.Interfaces\PopQuiz.Service.Quiz.Application.Interfaces.csproj" />
     <ProjectReference Include="..\PopQuiz.Service.Quiz.Domain\PopQuiz.Service.Quiz.Domain.csproj" />
+    <ProjectReference Include="..\PopQuiz.Service.Quiz.Persistence\PopQuiz.Service.Quiz.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

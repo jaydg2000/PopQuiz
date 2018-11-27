@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using PopQuiz.Service.Quiz.Domain.Entities;
-using PopQuiz.Service.Quiz.Infrastructure.Persistence.Configurations;
+using PopQuiz.Service.Quiz.Persistence.Configurations;
 
-namespace PopQuiz.Service.Quiz.Infrastructure.Persistence
+namespace PopQuiz.Service.Quiz.Persistence
 {
     public class QuizDbContext : DbContext
     {
@@ -31,6 +31,8 @@ namespace PopQuiz.Service.Quiz.Infrastructure.Persistence
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.ApplyConfiguration(new ChoiceConfiguration());
+            modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new QuizConfiguration());
         }
     }

@@ -11,9 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
 using PopQuiz.Service.Quiz.Application.Infrastructure;
-using PopQuiz.Service.Quiz.Application.Interfaces.Repository;
-using PopQuiz.Service.Quiz.Infrastructure.Persistence;
-using PopQuiz.Service.Quiz.Infrastructure.Persistence.Repository;
+using PopQuiz.Service.Quiz.Persistence;
 using System.Reflection;
 
 namespace PopQuiz.Service.Quiz
@@ -54,9 +52,7 @@ namespace PopQuiz.Service.Quiz
 
             // dependencies
             services
-                .AddScoped<DbContext, QuizDbContext>()
-                .AddScoped<IQuizRepository, QuizRepository>()
-                .AddScoped<IUnitOfWork, UnitOfWork>();
+                .AddScoped<DbContext, QuizDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

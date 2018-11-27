@@ -1,33 +1,37 @@
 ﻿using MediatR;
-using PopQuiz.Service.Quiz.Application.Interfaces.Repository;
+using PopQuiz.Service.Quiz.Application.Infrastructure;
 using PopQuiz.Service.Quiz.Application.Models;
 using PopQuiz.Service.Quiz.Domain.Entities;
-using System;
+using PopQuiz.Service.Quiz.Persistence;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes
 {
-    public class GetListOfQuizesQueryHandler : IRequestHandler<GetListOfQuizesQuery, QuizListViewModel>
+    internal class GetListOfQuizesQueryHandler : IRequestHandler<GetListOfQuizesQuery, QuizListViewModel>
     {
-        IUnitOfWork unitOfWork;
+        readonly private QuizDbContext dbContext;
 
-        public GetListOfQuizesQueryHandler(IUnitOfWork unitOfWork)
+        public GetListOfQuizesQueryHandler(QuizDbContext dbContext)
         {
-            this.unitOfWork = unitOfWork;
+            this.dbContext = dbContext;
         }
 
-        public async Task<QuizListViewModel> Handle(GetListOfQuizesQuery request, CancellationToken cancellationToken)
+        public Task<QuizListViewModel> Handle(GetListOfQuizesQuery request, CancellationToken cancellationToken)
         {
-            QuizListViewModel viewModel = new QuizListViewModel()
+            return Task<QuizListViewModel>.Factory.StartNew(() =>
             {
-                QuizSummaries = CreateListOfQuizSummaries(unitOfWork.Quizes.GetAll())
-            };
 
-            return viewModel;
+                QuizListViewModel viewModel = new QuizListViewModel()
+                {
+                    QuizSummaries = CreateListOfQuizSummaries(dbContext.Quizes.ToList())
+                };
+
+                return viewModel;
+
+            });
         }
 
         private IEnumerable<QuizSummaryViewModel> CreateListOfQuizSummaries(IEnumerable<ProctoredQuiz> quizes)
