@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
 {
-    public class CreateQuizCommandHandler : IRequestHandler<CreateQuizCommand, QuizCreatedViewModel>
+    public class CreateQuizCommandHandler : IRequestHandler<CreateQuizCommand, CreateQuizCommandResponse>
     {
         readonly private QuizDbContext dbContext;
 
@@ -16,14 +16,14 @@ namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
             this.dbContext = dbContext;
         }
 
-        public Task<QuizCreatedViewModel> Handle(CreateQuizCommand request, CancellationToken cancellationToken)
+        public Task<CreateQuizCommandResponse> Handle(CreateQuizCommand request, CancellationToken cancellationToken)
         {
-            return Task<QuizCreatedViewModel>.Factory.StartNew(() =>
+            return Task<CreateQuizCommandResponse>.Factory.StartNew(() =>
                 {
                     ProctoredQuiz quiz = new ProctoredQuiz(request.Name, request.Description);
                     dbContext.Quizes.Add(quiz);
 
-                    QuizCreatedViewModel model = new QuizCreatedViewModel()
+                    CreateQuizCommandResponse model = new CreateQuizCommandResponse()
                     {
                         Id = quiz.Id,
                         Name = quiz.Name,

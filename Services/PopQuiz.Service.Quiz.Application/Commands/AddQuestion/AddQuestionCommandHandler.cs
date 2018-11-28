@@ -4,6 +4,7 @@ using PopQuiz.Service.Quiz.Application.Models;
 using PopQuiz.Service.Quiz.Domain.Entities;
 using PopQuiz.Service.Quiz.Persistence;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,11 +28,23 @@ namespace PopQuiz.Service.Quiz.Application.Commands.AddQuestion
                 quiz.Questions.Add(question);
                 dbContext.SaveChanges();
 
-                return new AddQuestionCommandResponse()
+                var response = new AddQuestionCommandResponse()
                 {
-                    NewId = question.Id
+                    Id = question.Id,
+                    Answers = BuildResponseChoices(question)
                 };
+
+                return response;
             });
+        }
+
+        private IEnumerable<AddedChoice> BuildResponseChoices(Question question)
+        {
+            return (from choice in question.Choices
+                    select new AddedChoice() {
+                        Text = choice.Text,
+                        IsCorrect = choice.IsCorrect
+                    }).ToList();
         }
 
         private ProctoredQuiz FindQuiz(AddQuestionCommand request)

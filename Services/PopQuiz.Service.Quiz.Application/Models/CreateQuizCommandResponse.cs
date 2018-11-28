@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PopQuiz.Service.Quiz.Application.Models
 {
-    public class QuizCreatedViewModel
+    public class CreateQuizCommandResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }

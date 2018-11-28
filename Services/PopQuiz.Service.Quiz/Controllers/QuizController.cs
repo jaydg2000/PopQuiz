@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PopQuiz.Service.Quiz.Application.Commands.AddQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
+using PopQuiz.Service.Quiz.Application.Models;
 using PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes;
 using System.Threading.Tasks;
 
@@ -18,14 +19,17 @@ namespace PopQuiz.Service.Quiz.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateQuiz([FromBody] CreateQuizCommand createQuizCommand)
         {
-            return Ok(await Mediator.Send(createQuizCommand));
+            CreateQuizCommandResponse response = await Mediator.Send(createQuizCommand);
+            return Created(GetLocationUrl(response.Id), response);
         }
 
         [HttpPost]
         [Route("question")]
         public async Task<IActionResult> CreateQuestion([FromBody] AddQuestionCommand addQuestionCommand)
         {
-            return Ok(await Mediator.Send(addQuestionCommand));
+            AddQuestionCommandResponse response = await Mediator.Send(addQuestionCommand);
+            return Created(GetLocationUrl(response.Id), response);
         }
+
     }
 }

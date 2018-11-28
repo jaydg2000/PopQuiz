@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
 {
-    public class CreateQuizCommand : IRequest<QuizCreatedViewModel>
+    public class CreateQuizCommand : IRequest<CreateQuizCommandResponse>
     {
         public string Name { get; set; }
         public string Description { get; set; }

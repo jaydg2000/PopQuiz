@@ -18,5 +18,9 @@ namespace PopQuiz.Service.Quiz.Controllers
             }
         }
 
+        protected string GetLocationUrl(int resourceId)
+        {
+            return $"~{Request.Path}/{resourceId}";
+        }
     }
 }
