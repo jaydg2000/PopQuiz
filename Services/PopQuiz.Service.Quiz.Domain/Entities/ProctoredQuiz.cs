@@ -1,6 +1,7 @@
 ﻿using PopQuiz.Service.Common.Domain.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PopQuiz.Service.Quiz.Domain.Entities
@@ -9,6 +10,7 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
+        public virtual ICollection<Question> Questions { get; set; }
 
         public ProctoredQuiz(string name, string description = "")
             : this(0, name, description)
@@ -20,6 +22,7 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
         {            
             this.Name = name;
             this.Description = description;
+            Questions = new List<Question>();
         }
     }
 }
