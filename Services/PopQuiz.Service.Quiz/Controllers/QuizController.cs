@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PopQuiz.Service.Quiz.Application.Commands.AddQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
+using PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion;
 using PopQuiz.Service.Quiz.Application.Models;
 using PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes;
 using System.Threading.Tasks;
@@ -31,5 +32,18 @@ namespace PopQuiz.Service.Quiz.Controllers
             return Created(GetLocationUrl(response.Id), response);
         }
 
+        [HttpDelete]
+        [Route("{quizid:int}/question/{questionid:int}")]
+        public async Task<IActionResult> DeleteQuestion(int quizId, int questionId)
+        {
+            DeleteQuestionCommand command = new DeleteQuestionCommand()
+            {
+                QuizId = quizId,
+                QuestionId = questionId
+            };
+
+            await Mediator.Send(command);
+            return NoContent();
+        }
     }
 }

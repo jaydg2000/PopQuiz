@@ -24,6 +24,10 @@ namespace PopQuiz.Service.Quiz.Persistence.Configurations
             builder.Property(entity => entity.IsCorrect)
                 .HasColumnName("IsCorrect")
                 .HasColumnType("bit");
+
+            builder.HasOne(entity => entity.Question)
+                .WithMany(question => question.Choices)
+                .IsRequired();
         }
     }
 }

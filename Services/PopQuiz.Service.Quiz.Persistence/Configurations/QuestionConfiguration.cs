@@ -19,6 +19,10 @@ namespace PopQuiz.Service.Quiz.Persistence.Configurations
                 .HasColumnName("QuestionText")
                 .IsRequired()
                 .HasColumnType("nvarchar(2000)");
+
+            builder.HasOne(p => p.Quiz)
+                .WithMany(q => q.Questions)
+                .IsRequired();
         }
     }
 }

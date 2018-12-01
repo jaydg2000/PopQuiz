@@ -50,6 +50,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.AddQuestion
         private ProctoredQuiz FindQuiz(AddQuestionCommand request)
         {
             ProctoredQuiz quiz = dbContext.Quizes.Find(request.QuizId);
+            // TODO move this check to a validator.
             if (quiz == null)
             {
                 throw new EntityNotFoundException($"Quiz {request.QuizId} was not found.");

@@ -22,6 +22,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
                 {
                     ProctoredQuiz quiz = new ProctoredQuiz(request.Name, request.Description);
                     dbContext.Quizes.Add(quiz);
+                    dbContext.SaveChanges();
 
                     CreateQuizCommandResponse model = new CreateQuizCommandResponse()
                     {
