@@ -16,7 +16,8 @@ namespace PopQuiz.Service.Quiz.Filters
     {
         public override void OnException(ExceptionContext context)
         {
-            if (context.Exception is ValidationException)
+            if (context.Exception is ValidationException
+                || context.Exception is RequestExpectationException)
             {
                 context.Result = new BadRequestObjectResult(
                     new {
