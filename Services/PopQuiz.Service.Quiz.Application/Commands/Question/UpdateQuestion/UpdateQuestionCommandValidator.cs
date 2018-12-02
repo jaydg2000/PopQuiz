@@ -11,9 +11,9 @@ namespace PopQuiz.Service.Quiz.Application.Commands.UpdateQuestion
         public UpdateQuestionCommandValidator()
         {
             RuleFor(q => q.NewText)
-                .MinimumLength(RuleConstants.QUESTION_NAME_MINIMUM_LENGTH)
-                .MaximumLength(RuleConstants.QUESTION_NAME_MAXIMUM_LENGTH)
-                .Matches(RuleConstants.QUESTION_NAME_REGEX);
+                .MinimumLength(RuleConstants.QUESTION_TEXT_MINIMUM_LENGTH)
+                .MaximumLength(RuleConstants.QUESTION_TEXT_MAXIMUM_LENGTH)
+                .Matches(RuleConstants.QUESTION_TEXT_REGEX);
         }
     }
 }

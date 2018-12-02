@@ -32,5 +32,12 @@ namespace PopQuiz.Service.Quiz.Application.Test.Commands
             validator.ShouldHaveValidationErrorFor(e => e.Name, value);
         }
 
+        [Theory]
+        [InlineData("")]
+        [InlineData("This is a description.")]
+        public void Validate_ValidDescription_DoesNotFail(string value)
+        {
+            validator.ShouldNotHaveValidationErrorFor(e => e.Description, value);
+        }
     }
 }

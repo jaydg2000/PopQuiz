@@ -12,7 +12,10 @@ namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
                 .MaximumLength(RuleConstants.QUIZ_NAME_MAXIMUM_LENGTH)
                 .Matches(RuleConstants.QUIZ_NAME_REGEX);
 
-            RuleFor(x => x.Description).MaximumLength(RuleConstants.QUIZ_DESCRIPTION_MAXIMUM_LENGTH);
+            RuleFor(x => x.Description)
+                .Length(
+                    RuleConstants.QUIZ_DESCRIPTION_MINIMUM_LENGTH, 
+                    RuleConstants.QUIZ_DESCRIPTION_MAXIMUM_LENGTH);
         }
     }
 }

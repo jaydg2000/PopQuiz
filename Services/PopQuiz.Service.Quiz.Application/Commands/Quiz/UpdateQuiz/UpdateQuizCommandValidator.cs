@@ -1,9 +1,6 @@
 ﻿using FluentValidation;
 using PopQuiz.Service.Quiz.Application.Commands.UpdateQuiz;
 using PopQuiz.Service.Quiz.Application.Common.Validation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PopQuiz.Service.Quiz.Application.Commands.Quiz.UpdateQuiz
 {
@@ -16,7 +13,8 @@ namespace PopQuiz.Service.Quiz.Application.Commands.Quiz.UpdateQuiz
                 .GreaterThanOrEqualTo(0);
 
             RuleFor(c => c.NewName)
-                .Length(RuleConstants.QUIZ_NAME_MINIMUM_LENGTH, RuleConstants.QUIZ_NAME_MAXIMUM_LENGTH);
+                .Length(RuleConstants.QUIZ_NAME_MINIMUM_LENGTH, RuleConstants.QUIZ_NAME_MAXIMUM_LENGTH)
+                .Matches(RuleConstants.QUIZ_NAME_REGEX);
 
             RuleFor(c => c.NewDescription)
                 .Length(

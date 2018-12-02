@@ -1,7 +1,4 @@
 ﻿using PopQuiz.Service.Quiz.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace PopQuiz.Service.Quiz.Domain.Test.Entities
