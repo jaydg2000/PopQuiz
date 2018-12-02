@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using PopQuiz.Service.Quiz.Application.Exceptions;
+using PopQuiz.Service.Common.Exceptions;
 using PopQuiz.Service.Quiz.Domain.Entities;
 using PopQuiz.Service.Quiz.Persistence;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion
 {

@@ -1,11 +1,8 @@
 ﻿using MediatR;
-using PopQuiz.Service.Quiz.Application.Exceptions;
+using PopQuiz.Service.Common.Exceptions;
 using PopQuiz.Service.Quiz.Domain.Entities;
 using PopQuiz.Service.Quiz.Persistence;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

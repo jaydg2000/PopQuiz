@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Exceptions\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="8.0.100" />
+    <PackageReference Include="FluentValidation" Version="8.0.101" />
     <PackageReference Include="MediatR" Version="5.1.0" />
   </ItemGroup>
 

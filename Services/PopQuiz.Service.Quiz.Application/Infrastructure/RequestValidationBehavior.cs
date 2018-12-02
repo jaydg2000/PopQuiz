@@ -1,9 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -31,7 +29,7 @@ namespace PopQuiz.Service.Quiz.Application.Infrastructure
 
             if (failures.Count != 0)
             {
-                throw new Exceptions.ValidationException(failures);
+                throw new Service.Common.Exceptions.ValidationException(failures);
             }
 
             return next();

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PopQuiz.Service.Quiz.Application.Exceptions
+namespace PopQuiz.Service.Common.Exceptions
 {
     public class EntityNotFoundException : ServiceOperationException
     {

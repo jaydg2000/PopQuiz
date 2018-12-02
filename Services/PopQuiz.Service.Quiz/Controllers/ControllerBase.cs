@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using PopQuiz.Service.Common.Exceptions;
 using PopQuiz.Service.Quiz.Filters;
 using System;
-using PopQuiz.Service.Quiz.Application.Exceptions;
 
 namespace PopQuiz.Service.Quiz.Controllers
 {
