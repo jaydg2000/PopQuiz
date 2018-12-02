@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using PopQuiz.Service.Quiz.Application.Infrastructure;
 using PopQuiz.Service.Quiz.Application.Models;
 using PopQuiz.Service.Quiz.Domain.Entities;
 using PopQuiz.Service.Quiz.Persistence;

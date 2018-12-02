@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PopQuiz.Service.Common.Infrastructure;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
-using PopQuiz.Service.Quiz.Application.Infrastructure;
 using PopQuiz.Service.Quiz.Persistence;
 using System.Reflection;
 
