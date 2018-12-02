@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PopQuiz.Service.Common.Web\PopQuiz.Service.Common.Web.csproj" />
     <ProjectReference Include="..\PopQuiz.Service.Common\PopQuiz.Service.Common.csproj" />
     <ProjectReference Include="..\PopQuiz.Service.Quiz.Application\PopQuiz.Service.Quiz.Application.csproj" />
     <ProjectReference Include="..\PopQuiz.Service.Quiz.Infrastructure\PopQuiz.Service.Quiz.Infrastructure.csproj" />

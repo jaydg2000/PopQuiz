@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PopQuiz.Service.Common.Exceptions
+namespace PopQuiz.Service.Common.Web.Exceptions
 {
     public class ValidationException : Exception
     {

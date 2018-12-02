@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PopQuiz.Service.Common.Web.Controllers;
 using PopQuiz.Service.Quiz.Application.Commands.AddQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
 using PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace PopQuiz.Service.Quiz.Controllers
 {
     [Route("api/[controller]")]
-    public class QuizController : ControllerBase
+    public class QuizController : PopQuizServiceControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> GetAllQuizes()

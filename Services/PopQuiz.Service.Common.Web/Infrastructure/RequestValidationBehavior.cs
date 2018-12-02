@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PopQuiz.Service.Common.Infrastructure
+namespace PopQuiz.Service.Common.Web.Infrastructure
 {
     public class RequestValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
@@ -29,7 +29,7 @@ namespace PopQuiz.Service.Common.Infrastructure
 
             if (failures.Count != 0)
             {
-                throw new Service.Common.Exceptions.ValidationException(failures);
+                throw new Service.Common.Web.Exceptions.ValidationException(failures);
             }
 
             return next();

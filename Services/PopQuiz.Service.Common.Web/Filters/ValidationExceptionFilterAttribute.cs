@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using PopQuiz.Service.Common.Exceptions;
+using PopQuiz.Service.Common.Web.Exceptions;
 
-namespace PopQuiz.Service.Quiz.Filters
+namespace PopQuiz.Service.Common.Web.Filters
 {
     public class ValidationExceptionFilterAttribute : ExceptionFilterAttribute
     {

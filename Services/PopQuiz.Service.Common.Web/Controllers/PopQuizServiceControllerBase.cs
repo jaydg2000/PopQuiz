@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using PopQuiz.Service.Common.Exceptions;
-using PopQuiz.Service.Quiz.Filters;
+using PopQuiz.Service.Common.Web.Filters;
 using System;
 
-namespace PopQuiz.Service.Quiz.Controllers
+namespace PopQuiz.Service.Common.Web.Controllers
 {
     [ValidationExceptionFilter]
-    public abstract class ControllerBase : Controller
+    public abstract class PopQuizServiceControllerBase : Controller
     {
         private IMediator mediator;
 
