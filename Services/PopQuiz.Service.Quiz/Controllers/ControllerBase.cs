@@ -1,9 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
+using PopQuiz.Service.Quiz.Filters;
 
 namespace PopQuiz.Service.Quiz.Controllers
 {
+    [ValidationExceptionFilter]
     public abstract class ControllerBase : Controller
     {
         private IMediator mediator;

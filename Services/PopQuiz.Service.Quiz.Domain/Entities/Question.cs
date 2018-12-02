@@ -5,7 +5,7 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
 {
     public class Question : DomainEntity
     {
-        public string Text { get; private set; }
+        public string Text { get; set; }
         public ProctoredQuiz Quiz { get; set; }
         public virtual ICollection<Choice> Choices { get; set; }
 

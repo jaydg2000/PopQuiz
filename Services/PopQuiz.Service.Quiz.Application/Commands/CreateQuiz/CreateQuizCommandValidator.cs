@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using PopQuiz.Service.Quiz.Application.Common.Validation;
 
 namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
 {
@@ -7,11 +8,11 @@ namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
         public CreateQuizCommandValidator()
         {
             RuleFor(x => x.Name)
-                .MinimumLength(2)
-                .MaximumLength(50)
-                .Matches(@"(^[a-zA-Z0-9#$()!.\-+=,& ]*$)");
+                .MinimumLength(RuleConstants.QUIZ_NAME_MINIMUM_LENGTH)
+                .MaximumLength(RuleConstants.QUIZ_NAME_MAXIMUM_LENGTH)
+                .Matches(RuleConstants.QUIZ_NAME_REGEX);
 
-            RuleFor(x => x.Description).MaximumLength(500);
+            RuleFor(x => x.Description).MaximumLength(RuleConstants.QUIZ_DESCRIPTION_MAXIMUM_LENGTH);
         }
     }
 }

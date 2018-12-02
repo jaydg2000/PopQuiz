@@ -33,5 +33,20 @@ namespace PopQuiz.Service.Quiz.Application.Exceptions
         }
 
         public IDictionary<string, string[]> Failures { get; }
+
+        public override string Message {
+            get 
+            {
+                var message = new StringBuilder();
+                foreach( string key in Failures.Keys)
+                {
+                    foreach (string value in Failures[key])
+                    {                        
+                        message.AppendLine($"{value}");
+                    }
+                }
+                return message.ToString();
+            }
+        }
     }
 }

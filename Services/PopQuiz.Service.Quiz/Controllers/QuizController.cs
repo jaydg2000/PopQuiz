@@ -28,7 +28,7 @@ namespace PopQuiz.Service.Quiz.Controllers
         [HttpPost]
         [Route("question")]
         public async Task<IActionResult> CreateQuestion([FromBody] AddQuestionCommand addQuestionCommand)
-        {
+        {            
             AddQuestionCommandResponse response = await Mediator.Send(addQuestionCommand);
             return Created(GetLocationUrl(response.Id), response);
         }
