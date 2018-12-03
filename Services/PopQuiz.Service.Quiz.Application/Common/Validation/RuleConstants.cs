@@ -12,5 +12,9 @@
         static public int QUESTION_TEXT_MAXIMUM_LENGTH = 2000;
         static public string QUESTION_TEXT_REGEX = @"(^[a-zA-Z0-9#$()!/\+=,@&?. -]*$)";
         static public int QUESTION_MINIMUM_NUMBER_OF_CHOICES = 2;
+
+        static public int CHOICE_TEXT_MINIMUM_LENGTH = 1;
+        static public int CHOICE_TEXT_MAXIMUM_LENGTH = 100;
+        static public string CHOICE_TEXT_REGEX = @"(^[a-zA-Z0-9#$()!/\+=,@&?. -]*$)";
     }
 }

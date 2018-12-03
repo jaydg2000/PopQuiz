@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PopQuiz.Service.Common.Web.Controllers;
 using PopQuiz.Service.Quiz.Application.Commands.AddQuestion;
+using PopQuiz.Service.Quiz.Application.Commands.Choice.AddChoice;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
 using PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.DeleteQuiz;
@@ -30,7 +31,7 @@ namespace PopQuiz.Service.Quiz.Controllers
             return Created(GetLocationUrl(response.Id), response);
         }
 
-        [HttpPut]        
+        [HttpPut]
         [Route("{quizid:int}")]
         public async Task<IActionResult> UpdateQuiz(int quizId, [FromBody] UpdateQuizCommand updateQuizCommand)
         {
@@ -44,7 +45,7 @@ namespace PopQuiz.Service.Quiz.Controllers
         [HttpPost]
         [Route("question")]
         public async Task<IActionResult> CreateQuestion([FromBody] AddQuestionCommand addQuestionCommand)
-        {            
+        {
             AddQuestionCommandResponse response = await Mediator.Send(addQuestionCommand);
             return Created(GetLocationUrl(response.Id), response);
         }
@@ -86,6 +87,18 @@ namespace PopQuiz.Service.Quiz.Controllers
 
             await Mediator.Send(command);
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("{quizid:int}/question/{questionid:int}/choice")]
+        public async Task<IActionResult> AddChoice(int quizId, int questionId, [FromBody] AddChoiceCommand addChoiceCommand)
+        {
+            Expect(addChoiceCommand, c => c != null);
+            Expect(addChoiceCommand, c => c.QuizId == quizId);
+            Expect(addChoiceCommand, c => c.QuestionId == questionId);
+
+            AddChoiceCommandResponse response = await Mediator.Send(addChoiceCommand);
+            return Created(GetLocationUrl(response.NewChoiceId), response);
         }
     }
 }
