@@ -24,8 +24,8 @@ namespace PopQuiz.Service.Quiz.Application.Commands.AddQuestion
             return Task<AddQuestionCommandResponse>.Factory.StartNew(() =>
             {
                 ProctoredQuiz quiz = FindQuiz(request);
-                Question question = BuildQuestion(request);
-                quiz.Questions.Add(question);
+                Question question = BuildQuestion(request);                
+                quiz.AddQuestion(question);
                 dbContext.SaveChanges();
 
                 var response = new AddQuestionCommandResponse()
@@ -50,7 +50,6 @@ namespace PopQuiz.Service.Quiz.Application.Commands.AddQuestion
         private ProctoredQuiz FindQuiz(AddQuestionCommand request)
         {
             ProctoredQuiz quiz = dbContext.Quizes.Find(request.QuizId);
-            // TODO move this check to a validator.
             if (quiz == null)
             {
                 throw new EntityNotFoundException($"Quiz {request.QuizId} was not found.");
@@ -63,7 +62,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.AddQuestion
             Question question = new Question(request.Text);
             foreach (AddedChoice addedChoice in request.Answers)
             {
-                question.Choices.Add(new Choice(addedChoice.Text, addedChoice.IsCorrect));
+                question.AddChoice(new Domain.Entities.Choice(addedChoice.Text, addedChoice.IsCorrect));
             }
 
             return question;

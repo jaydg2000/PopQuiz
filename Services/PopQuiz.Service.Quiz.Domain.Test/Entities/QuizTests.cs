@@ -1,22 +1,38 @@
 ﻿using PopQuiz.Service.Quiz.Domain.Entities;
+using System.Linq;
 using Xunit;
 
 namespace PopQuiz.Service.Quiz.Domain.Test.Entities
 {
     public class QuizTests
     {
-        [Fact]
-        public void CanCreateQuizEntity()
+        private ProctoredQuiz target;
+        private int id = 1;
+        private string name = "Name";
+        private string description = "Description";
+
+        public QuizTests()
         {
-            int id = 1;
-            string name = "Name";
-            string description = "Description";
+            target = new ProctoredQuiz(id, name, description);
+        }
 
-            ProctoredQuiz target = new ProctoredQuiz(id, name, description);
-
+        [Fact]
+        public void ctor_builds_quiz()
+        {
             Assert.Equal(id, target.Id);
             Assert.Equal(name, target.Name);
             Assert.Equal(description, target.Description);
+        }
+
+        [Fact]
+        public void AddQuestion_WithANewQuestion_AddsQuestionToQuiz()
+        {
+            const int id = 1;
+            Question newQuestion = new Question(id, "This is a new question");
+            target.AddQuestion(newQuestion);
+            Question actual = target.Questions.FirstOrDefault(x => x.Id == id);
+
+            Assert.NotNull(actual);            
         }
     }
 }

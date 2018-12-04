@@ -1,4 +1,5 @@
 ﻿using PopQuiz.Service.Common.Domain.Infrastructure;
+using PopQuiz.Service.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,12 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
 {
     public class ProctoredQuiz : DomainEntity
     {
+        private List<Question> questions;
         public string Name { get; private set; }
         public string Description { get; private set; }
-        public virtual ICollection<Question> Questions { get; set; }
+        public virtual IEnumerable<Question> Questions => questions?.ToList();
+
+        private ProctoredQuiz() : this(0, string.Empty) { }
 
         public ProctoredQuiz(string name, string description = "")
             : this(0, name, description)
@@ -22,7 +26,24 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
         {            
             this.Name = name;
             this.Description = description;
-            Questions = new List<Question>();
+            questions = new List<Question>();
+        }
+
+        public void AddQuestion(Question question)
+        {
+            this.questions.Add(question);
+        }
+
+        public void DeleteQuestion(int id)
+        {
+            var questionToRemove = Questions.FirstOrDefault(q => q.Id == id);
+
+            if (questionToRemove == null)
+            {
+                throw new EntityNotFoundException($"Question {id} was not found.");
+            }
+
+            questions.Remove(questionToRemove);
         }
     }
 }

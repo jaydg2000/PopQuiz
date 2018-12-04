@@ -33,14 +33,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion
                     throw new EntityNotFoundException($"Quiz {request.QuizId} was not found.");
                 }
 
-                var questionToRemove = quiz.Questions.FirstOrDefault(q => q.Id == request.QuestionId);
-
-                if (questionToRemove == null)
-                {
-                    throw new EntityNotFoundException($"Question {request.QuestionId} was not found.");
-                }
-
-                quiz.Questions.Remove(questionToRemove);
+                quiz.DeleteQuestion(request.QuestionId);
                 dbContext.SaveChangesAsync();
 
                 return Unit.Value;

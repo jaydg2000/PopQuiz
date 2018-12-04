@@ -20,7 +20,10 @@ namespace PopQuiz.Service.Quiz.Persistence.Configurations
 
             builder.Property(entity => entity.Description)
                 .HasColumnName("Description")
-                .HasColumnType("nvarchar(500)");  
+                .HasColumnType("nvarchar(500)");
+
+            builder.Metadata.FindNavigation(nameof(ProctoredQuiz.Questions))
+                .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

@@ -9,5 +9,10 @@ namespace PopQuiz.Service.Common.Exceptions
     {
         public EntityNotFoundException(string message)
             : base(message) { }
+
+        public EntityNotFoundException(string entityName, int id)
+            : base($"{entityName} {id} was not found.")
+        {
+        }
     }
 }

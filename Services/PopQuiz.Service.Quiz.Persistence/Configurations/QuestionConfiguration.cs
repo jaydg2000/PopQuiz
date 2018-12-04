@@ -23,6 +23,9 @@ namespace PopQuiz.Service.Quiz.Persistence.Configurations
             builder.HasOne(p => p.Quiz)
                 .WithMany(q => q.Questions)
                 .IsRequired();
+
+            builder.Metadata.FindNavigation(nameof(Question.Choices))
+                .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

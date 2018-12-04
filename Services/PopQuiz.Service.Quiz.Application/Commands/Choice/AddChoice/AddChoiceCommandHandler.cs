@@ -32,7 +32,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.Choice.AddChoice
                }
 
                var newChoice = new Domain.Entities.Choice(request.Text, request.IsCorrect);
-               question.Choices.Add(newChoice);
+               question.AddChoice(newChoice);
                dbContext.SaveChanges();
 
                return new AddChoiceCommandResponse()
