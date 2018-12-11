@@ -4,6 +4,11 @@
     {        
         public int Id { get; private set; }
 
+        public DomainEntity()
+            : this(0)
+        {
+        }
+
         public DomainEntity(int id)
         {
             this.Id = id;

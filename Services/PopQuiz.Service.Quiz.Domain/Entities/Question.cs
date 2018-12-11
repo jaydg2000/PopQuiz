@@ -11,9 +11,9 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
 
         public string Text { get; set; }
         public ProctoredQuiz Quiz { get; set; }
-        public virtual IEnumerable<Choice> Choices => choices?.ToList();
+        public IEnumerable<Choice> Choices => choices;
 
-        private Question() : this(string.Empty) { }
+        private Question(): this(0, string.Empty) { }
 
         public Question(int id, string text) : base(id)
         {
@@ -31,7 +31,7 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
             choices.Add(choice);
         }
 
-        public void DeleteChoice(int id)
+        public void RemoveChoice(int id)
         {
             Choice choiceToRemove = choices.FirstOrDefault(ch => ch.Id == id);
 

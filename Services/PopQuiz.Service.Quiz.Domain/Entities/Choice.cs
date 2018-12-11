@@ -4,6 +4,8 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
 {
     public class Choice : DomainEntity
     {
+        private Choice() { }
+
         public Choice(string text, bool isCorrect)
             : this(0, text, isCorrect)
         {

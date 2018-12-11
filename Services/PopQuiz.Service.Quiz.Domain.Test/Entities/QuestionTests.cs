@@ -55,7 +55,7 @@ namespace PopQuiz.Service.Quiz.Domain.Test.Entities
             Choice addedChoice = target.Choices.FirstOrDefault(ch => ch.Id == choiceId);
             Assert.NotNull(addedChoice);
 
-            target.DeleteChoice(choiceId);
+            target.RemoveChoice(choiceId);
             Choice actual = target.Choices.FirstOrDefault(ch => ch.Id == choiceId);
             Assert.Null(actual);
         }

@@ -21,7 +21,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.DeleteQuiz
         {
             return Task<Unit>.Factory.StartNew(() =>
            {
-               ProctoredQuiz quiz = dbContext.Quizes.FirstOrDefault(q => q.Id == request.QuizId);
+               ProctoredQuiz quiz = dbContext.FindQuiz(request.QuizId);
 
                if (quiz == null)
                {

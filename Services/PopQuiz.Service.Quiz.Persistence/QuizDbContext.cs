@@ -43,6 +43,11 @@ namespace PopQuiz.Service.Quiz.Persistence
                 .HasOne(question => question.Quiz)
                 .WithMany(quiz => quiz.Questions)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Choice>()
+                .HasOne(choice => choice.Question)
+                .WithMany(question => question.Choices)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

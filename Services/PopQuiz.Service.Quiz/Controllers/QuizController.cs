@@ -2,6 +2,7 @@
 using PopQuiz.Service.Common.Web.Controllers;
 using PopQuiz.Service.Quiz.Application.Commands.AddQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.Choice.AddChoice;
+using PopQuiz.Service.Quiz.Application.Commands.Choice.DeleteChoice;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
 using PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.DeleteQuiz;
@@ -63,12 +64,12 @@ namespace PopQuiz.Service.Quiz.Controllers
         }
 
         [HttpDelete]
-        [Route("{quizid:int}/question/{questionid:int}")]
-        public async Task<IActionResult> DeleteQuestion(int quizId, int questionId)
+        [Route("question/{questionid:int}")]
+        public async Task<IActionResult> DeleteQuestion(int questionId)
         {
+            Expect(questionId, (id) => id > 0);
             var command = new DeleteQuestionCommand()
             {
-                QuizId = quizId,
                 QuestionId = questionId
             };
 
@@ -99,6 +100,22 @@ namespace PopQuiz.Service.Quiz.Controllers
 
             AddChoiceCommandResponse response = await Mediator.Send(addChoiceCommand);
             return Created(GetLocationUrl(response.NewChoiceId), response);
+        }
+
+        [HttpDelete]
+        [Route("question/choice/{choiceid:int}")]
+        public async Task<IActionResult> DeleteChoice(int choiceId)
+        {
+            Expect(choiceId, c => c > 0);
+
+            var deleteChoiceCommand = new DeleteChoiceCommand()
+            {
+                ChoiceId = choiceId
+            };
+
+            await Mediator.Send(deleteChoiceCommand);
+
+            return NoContent();
         }
     }
 }
