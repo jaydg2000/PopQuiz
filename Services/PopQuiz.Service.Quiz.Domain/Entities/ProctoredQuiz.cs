@@ -1,18 +1,20 @@
-﻿using PopQuiz.Service.Common.Domain.Infrastructure;
+﻿using System;
+using PopQuiz.Service.Common.Domain.Infrastructure;
 using PopQuiz.Service.Common.Exceptions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
+using PopQuiz.Service.Common.Infrastructure;
 
 namespace PopQuiz.Service.Quiz.Domain.Entities
 {
+    // TODO: come up iwth better name than ProctoredQuiz
     public class ProctoredQuiz : DomainEntity
     {
-        private List<Question> questions;
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public IEnumerable<Question> Questions => questions;
+        private List<Question> _questions;
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public IEnumerable<Question> Questions => _questions;
 
         private ProctoredQuiz():this(0,string.Empty) { }
 
@@ -26,12 +28,20 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
         {            
             this.Name = name;
             this.Description = description;
-            questions = new List<Question>();
+            _questions = new List<Question>();
         }
 
-        public void AddQuestion(Question question)
+        #region Operations on Questions
+        public Question AddQuestion(string text, IEnumerable<Tuple<string, bool>> choices)
         {
-            this.questions.Add(question);
+            var question = new Question(text);
+            foreach (var choice in choices)
+            {
+                question.AddChoice(choice.Item1, choice.Item2);
+            }
+            _questions.Add(question);
+
+            return question;
         }
 
         public void RemoveQuestion(int id)
@@ -43,7 +53,40 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
                 throw new EntityNotFoundException($"Question {id} was not found.");
             }
 
-            questions.Remove(questionToRemove);
+            _questions.Remove(questionToRemove);
         }
+
+        public void UpdateQuestion(int questionId, string text)
+        {
+            var question = _questions.FirstOrDefault(q => q.Id == questionId);
+            if (question == null)
+            {
+                throw new EntityNotFoundException($"Question {questionId} was not found.");
+            }
+            question.Text = text;
+        }
+
+        
+        #endregion Operations on Questions
+
+        #region Operations on Choices
+        public Choice AddChoiceToQuestion(int questionId, string text, bool isCorrect)
+        {
+            var question = _questions.FirstOrDefault(q => q.Id == questionId);
+            return question?.AddChoice(text, isCorrect);
+        }
+
+        public void RemoveChoiceFromQuestion(int questionId, int choiceId)
+        {
+            var question = _questions.FirstOrDefault(q => q.Id == questionId);
+            question?.RemoveChoice(choiceId);
+        }
+
+        public void UpdateChoiceInQuestion(int questionId, int choiceId, string text, bool isCorrect)
+        {
+            var question = _questions.FirstOrDefault(q => q.Id == questionId);
+            question?.UpdateChoice(choiceId, text, isCorrect);
+        }
+        #endregion Operations on Choices
     }
 }

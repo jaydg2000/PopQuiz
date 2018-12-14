@@ -13,29 +13,21 @@ namespace PopQuiz.Service.Quiz.Application.Commands.Choice.DeleteChoice
 {
     internal class DeleteChoiceCommandHandler : IRequestHandler<DeleteChoiceCommand, Unit>
     {
-        private QuizDbContext dbContext;
+        private readonly QuizDbContext _dbContext;
 
         public DeleteChoiceCommandHandler(QuizDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
 
-        public Task<Unit> Handle(DeleteChoiceCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteChoiceCommand request, CancellationToken cancellationToken)
         {
-            return Task<Unit>.Factory.StartNew(() =>
-            {
-                Question question = dbContext.FindQuestionWithChoice(request.ChoiceId);
+            var quiz = await _dbContext.FindQuizAsync(request.QuizId, cancellationToken);
+            quiz.RemoveChoiceFromQuestion(request.QuestionId, request.ChoiceId);
 
-                if (question == null)
-                {
-                    throw new EntityNotFoundException("A Question with Choice", request.ChoiceId);
-                }
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
-                question.RemoveChoice(request.ChoiceId);
-                dbContext.SaveChanges();
-
-                return Unit.Value;
-            });
+            return Unit.Value;
         }
     }
 }

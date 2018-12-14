@@ -18,8 +18,8 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
             IsCorrect = isCorrect;
         }
 
-        public string Text { get; private set; }
-        public bool IsCorrect { get; private set; }
+        public string Text { get; set; }
+        public bool IsCorrect { get; set; }
         public Question Question { get; set; }
     }
 }

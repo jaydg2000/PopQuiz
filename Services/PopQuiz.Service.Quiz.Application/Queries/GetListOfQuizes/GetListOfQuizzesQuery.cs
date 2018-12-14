@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes
 {
-    public class GetListOfQuizesQuery : IRequest<QuizListViewModel>
+    public class GetListOfQuizzesQuery : IRequest<GetListOfQuizesQueryResponse>
     {
     }
 }

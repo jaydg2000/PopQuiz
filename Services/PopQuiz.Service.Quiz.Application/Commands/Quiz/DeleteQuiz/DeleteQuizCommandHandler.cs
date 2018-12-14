@@ -17,22 +17,19 @@ namespace PopQuiz.Service.Quiz.Application.Commands.DeleteQuiz
             this.dbContext = dbContext;
         }
 
-        public Task<Unit> Handle(DeleteQuizCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteQuizCommand request, CancellationToken cancellationToken)
         {
-            return Task<Unit>.Factory.StartNew(() =>
+           ProctoredQuiz quiz = await dbContext.FindQuizAsync(request.QuizId, cancellationToken);
+
+           if (quiz == null)
            {
-               ProctoredQuiz quiz = dbContext.FindQuiz(request.QuizId);
+               throw new EntityNotFoundException($"Quiz {request.QuizId} was not found.");
+           }
 
-               if (quiz == null)
-               {
-                   throw new EntityNotFoundException($"Quiz {request.QuizId} was not found.");
-               }
+           dbContext.Quizes.Remove(quiz);
+           await dbContext.SaveChangesAsync(cancellationToken);
 
-               dbContext.Quizes.Remove(quiz);
-               dbContext.SaveChanges();
-
-               return Unit.Value;
-           });
+           return Unit.Value;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System;
+using MediatR;
 using PopQuiz.Service.Common.Exceptions;
 using PopQuiz.Service.Quiz.Application.Models;
 using PopQuiz.Service.Quiz.Domain.Entities;
@@ -19,53 +20,41 @@ namespace PopQuiz.Service.Quiz.Application.Commands.AddQuestion
             this.dbContext = dbContext;
         }
 
-        public Task<AddQuestionCommandResponse> Handle(AddQuestionCommand request, CancellationToken cancellationToken)
+        public async Task<AddQuestionCommandResponse> Handle(AddQuestionCommand request, CancellationToken cancellationToken)
         {
-            return Task<AddQuestionCommandResponse>.Factory.StartNew(() =>
+            var quiz = await dbContext.FindQuizAsync(request.QuizId, cancellationToken);
+            Ensure(quiz, request.QuizId);
+            var question = quiz.AddQuestion(request.Text, GetChoiceList(request.Answers));
+
+            await dbContext.SaveChangesAsync(cancellationToken);
+
+            var response = new AddQuestionCommandResponse()
             {
-                ProctoredQuiz quiz = FindQuiz(request);
-                Question question = BuildQuestion(request);                
-                quiz.AddQuestion(question);
-                dbContext.SaveChanges();
+                Id = question.Id,
+                Answers = request.Answers
+            };
 
-                var response = new AddQuestionCommandResponse()
-                {
-                    Id = question.Id,
-                    Answers = BuildResponseChoices(question)
-                };
-
-                return response;
-            });
+            return response;
         }
 
-        private IEnumerable<AddedChoice> BuildResponseChoices(Question question)
+        private IEnumerable<Tuple<string, bool>> GetChoiceList(IEnumerable<AddedChoice> choices)
         {
-            return (from choice in question.Choices
-                    select new AddedChoice() {
-                        Text = choice.Text,
-                        IsCorrect = choice.IsCorrect
-                    }).ToList();
-        }
+            var requestChoices = new List<Tuple<string, bool>>();
+            foreach (AddedChoice choice in choices)
+            {
+                requestChoices.Add(new Tuple<string, bool>(choice.Text, choice.IsCorrect));
+            }
 
-        private ProctoredQuiz FindQuiz(AddQuestionCommand request)
+            return from choice in choices.AsParallel().AsOrdered()
+                select new Tuple<string, bool>(choice.Text, choice.IsCorrect);
+        }
+        
+        private static void Ensure(ProctoredQuiz quiz, int quizId)
         {
-            ProctoredQuiz quiz = dbContext.Quizes.Find(request.QuizId);
             if (quiz == null)
             {
-                throw new EntityNotFoundException($"Quiz {request.QuizId} was not found.");
+                throw new EntityNotFoundException("Quiz", quizId);
             }
-            return quiz;
-        }
-
-        private static Question BuildQuestion(AddQuestionCommand request)
-        {
-            Question question = new Question(request.Text);
-            foreach (AddedChoice addedChoice in request.Answers)
-            {
-                question.AddChoice(new Domain.Entities.Choice(addedChoice.Text, addedChoice.IsCorrect));
-            }
-
-            return question;
         }
     }
 }

@@ -29,16 +29,13 @@ namespace PopQuiz.Service.Quiz.Domain.Test.Entities
         [Fact]
         public void AddChoice_NewChoice_IsAdded()
         {
-            const int choiceId = 1;
             const string choiceText = "42";
             const bool choiceIsCorrect = true;
 
-            Choice choice = new Choice(choiceId, choiceText, choiceIsCorrect);
-            target.AddChoice(choice);
-            Choice actual = target.Choices.FirstOrDefault(ch => ch.Id == choiceId);
+            target.AddChoice(choiceText, choiceIsCorrect);
+            Choice actual = target.Choices.FirstOrDefault();
 
             Assert.NotNull(actual);
-            Assert.Equal(choiceId, actual.Id);
             Assert.Equal(choiceText, actual.Text);
             Assert.Equal(choiceIsCorrect, actual.IsCorrect);
         }
@@ -46,17 +43,15 @@ namespace PopQuiz.Service.Quiz.Domain.Test.Entities
         [Fact]
         public void DeleteChoice_ExistingChoice_IsRemoved()
         {
-            const int choiceId = 1;
             const string choiceText = "42";
             const bool choiceIsCorrect = true;
 
-            Choice choice = new Choice(choiceId, choiceText, choiceIsCorrect);
-            target.AddChoice(choice);
-            Choice addedChoice = target.Choices.FirstOrDefault(ch => ch.Id == choiceId);
+            target.AddChoice(choiceText, choiceIsCorrect);
+            Choice addedChoice = target.Choices.FirstOrDefault();
             Assert.NotNull(addedChoice);
 
-            target.RemoveChoice(choiceId);
-            Choice actual = target.Choices.FirstOrDefault(ch => ch.Id == choiceId);
+            target.RemoveChoice(addedChoice.Id);
+            Choice actual = target.Choices.FirstOrDefault();
             Assert.Null(actual);
         }
     }

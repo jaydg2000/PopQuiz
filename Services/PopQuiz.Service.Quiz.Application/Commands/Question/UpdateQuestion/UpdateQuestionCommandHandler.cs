@@ -17,21 +17,14 @@ namespace PopQuiz.Service.Quiz.Application.Commands.UpdateQuestion
             this.dbContext = dbContext;
         }
 
-        public Task<Unit> Handle(UpdateQuestionCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateQuestionCommand request, CancellationToken cancellationToken)
         {
-            return Task<Unit>.Factory.StartNew(() => 
-            {
-                ProctoredQuiz quiz = dbContext.Quizes.FirstOrDefault(q => q.Id == request.QuizId);
-                Ensure(quiz, request.QuizId);
+            var quiz = await dbContext.FindQuizAsync(request.QuizId, cancellationToken);
+            Ensure(quiz, request.QuizId);
+            quiz.UpdateQuestion(request.QuestionId, request.NewText);
+            await dbContext.SaveChangesAsync(cancellationToken);
 
-                Question questionToUpdate = quiz.Questions.FirstOrDefault(q => q.Id == request.QuestionId);
-                Ensure(questionToUpdate, request.QuestionId, request.QuizId);
-
-                questionToUpdate.Text = request.NewText;
-                dbContext.SaveChanges();
-
-                return Unit.Value;
-            });
+            return Unit.Value;
         }
 
         private void Ensure(ProctoredQuiz quiz, int quizId)
@@ -39,14 +32,6 @@ namespace PopQuiz.Service.Quiz.Application.Commands.UpdateQuestion
             if (quiz == null)
             {
                 throw new EntityNotFoundException($"Quiz {quizId} was not found.");
-            }
-        }
-
-        private void Ensure(Question question, int questionId, int quizId)
-        {
-            if (question == null)
-            {
-                throw new EntityNotFoundException($"Question {questionId} of Quiz {quizId} was not found.");
             }
         }
     }

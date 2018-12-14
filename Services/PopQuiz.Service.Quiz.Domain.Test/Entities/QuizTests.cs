@@ -1,4 +1,6 @@
-﻿using PopQuiz.Service.Quiz.Domain.Entities;
+﻿using System;
+using System.Collections.Generic;
+using PopQuiz.Service.Quiz.Domain.Entities;
 using System.Linq;
 using Xunit;
 
@@ -27,10 +29,11 @@ namespace PopQuiz.Service.Quiz.Domain.Test.Entities
         [Fact]
         public void AddQuestion_WithANewQuestion_AddsQuestionToQuiz()
         {
-            const int id = 1;
-            Question newQuestion = new Question(id, "This is a new question");
-            target.AddQuestion(newQuestion);
-            Question actual = target.Questions.FirstOrDefault(x => x.Id == id);
+            const string name = "New Quiz";
+            var choices = new List<Tuple<string, bool>>();
+
+            target.AddQuestion(name, choices);
+            Question actual = target.Questions.FirstOrDefault();
 
             Assert.NotNull(actual);            
         }

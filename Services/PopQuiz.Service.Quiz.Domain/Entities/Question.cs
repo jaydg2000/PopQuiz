@@ -26,21 +26,38 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
         {
         }
 
-        public void AddChoice(Choice choice)
+        public Choice AddChoice(string text, bool isCorrect)
         {
-            choices.Add(choice);
+            var newChoice = new Choice(text, isCorrect);
+            choices.Add(newChoice);
+
+            return newChoice;
         }
 
         public void RemoveChoice(int id)
         {
-            Choice choiceToRemove = choices.FirstOrDefault(ch => ch.Id == id);
+            var choiceToRemove = FindChoice(id);
 
-            if (choiceToRemove == null)
+            choices.Remove(choiceToRemove);
+        }
+
+        public void UpdateChoice(int id, string text, bool isCorrect)
+        {
+            Choice choiceToUpdate = FindChoice(id);
+            choiceToUpdate.Text = text;
+            choiceToUpdate.IsCorrect = isCorrect;
+        }
+
+        private Choice FindChoice(int id)
+        {
+            Choice choice = choices.FirstOrDefault(ch => ch.Id == id);
+
+            if (choice == null)
             {
                 throw new EntityNotFoundException("Choice", id);
             }
 
-            choices.Remove(choiceToRemove);
+            return choice;
         }
     }
 }

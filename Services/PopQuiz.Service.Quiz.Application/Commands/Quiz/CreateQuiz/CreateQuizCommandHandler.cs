@@ -9,30 +9,27 @@ namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
 {
     public class CreateQuizCommandHandler : IRequestHandler<CreateQuizCommand, CreateQuizCommandResponse>
     {
-        readonly private QuizDbContext dbContext;
+        private readonly QuizDbContext _dbContext;
 
         public CreateQuizCommandHandler(QuizDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
 
-        public Task<CreateQuizCommandResponse> Handle(CreateQuizCommand request, CancellationToken cancellationToken)
+        public async Task<CreateQuizCommandResponse> Handle(CreateQuizCommand request, CancellationToken cancellationToken)
         {
-            return Task<CreateQuizCommandResponse>.Factory.StartNew(() =>
-                {
-                    ProctoredQuiz quiz = new ProctoredQuiz(request.Name, request.Description);
-                    dbContext.Quizes.Add(quiz);
-                    dbContext.SaveChanges();
+            var quiz = new ProctoredQuiz(request.Name, request.Description);
+            await _dbContext.Quizes.AddAsync(quiz, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
-                    CreateQuizCommandResponse model = new CreateQuizCommandResponse()
-                    {
-                        Id = quiz.Id,
-                        Name = quiz.Name,
-                        Description = quiz.Description
-                    };
+            var model = new CreateQuizCommandResponse()
+            {
+                Id = quiz.Id,
+                Name = quiz.Name,
+                Description = quiz.Description
+            };
 
-                    return model;
-                });
+            return model;
         }
     }
 }

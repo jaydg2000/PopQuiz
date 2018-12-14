@@ -6,42 +6,32 @@ using PopQuiz.Service.Quiz.Persistence;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using PopQuiz.Service.Common.Infrastructure;
 
 namespace PopQuiz.Service.Quiz.Application.Commands.Choice.AddChoice
 {
     public class AddChoiceCommandHandler : IRequestHandler<AddChoiceCommand, AddChoiceCommandResponse>
     {
-        private QuizDbContext dbContext;
+        private QuizDbContext _dbContext;
 
         public AddChoiceCommandHandler(QuizDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
 
-        public Task<AddChoiceCommandResponse> Handle(AddChoiceCommand request, CancellationToken cancellationToken)
+        public async Task<AddChoiceCommandResponse> Handle(AddChoiceCommand request, CancellationToken cancellationToken)
         {
-            return Task<AddChoiceCommandResponse>.Factory.StartNew(() =>
-           {
-               Question question = dbContext.Quizes
-                    .FirstOrDefault(q => q.Id == request.QuizId)?.Questions
-                    .FirstOrDefault(qu => qu.Id == request.QuestionId);
+            var quiz = await _dbContext.FindQuizAsync(request.QuizId, cancellationToken);
+            Ensure.Entity(quiz, "Quiz", request.QuizId);
+            var addedChoiceRef = quiz.AddChoiceToQuestion(request.QuestionId, request.Text, request.IsCorrect);
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
-               if (question == null)
-               {
-                   throw new EntityNotFoundException($"Question {request.QuestionId} of Quiz {request.QuizId} was not found.");
-               }
-
-               var newChoice = new Domain.Entities.Choice(request.Text, request.IsCorrect);
-               question.AddChoice(newChoice);
-               dbContext.SaveChanges();
-
-               return new AddChoiceCommandResponse()
-               {
-                   NewChoiceId = newChoice.Id,
-                   Text = newChoice.Text,
-                   IsCorrect = newChoice.IsCorrect
-               };
-           });
+            return new AddChoiceCommandResponse()
+            {
+                NewChoiceId = addedChoiceRef.Id,
+                Text = request.Text,
+                IsCorrect = request.IsCorrect
+            };
         }
     }
 }

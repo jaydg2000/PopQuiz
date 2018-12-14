@@ -11,28 +11,24 @@ namespace PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion
 {
     public class DeleteQuestionCommandHandler : IRequestHandler<DeleteQuestionCommand>
     {
-        private QuizDbContext dbContext;
+        private readonly QuizDbContext _dbContext;
         public DeleteQuestionCommandHandler(QuizDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._dbContext = dbContext;
         }
 
-        // TODO. How can I access the cancellation token using MediatR?
-        public Task<Unit> Handle(DeleteQuestionCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteQuestionCommand request, CancellationToken cancellationToken)
         {
-            return Task<Unit>.Factory.StartNew(() =>
+            ProctoredQuiz quiz = await _dbContext.FindQuizAsync(request.QuizId, cancellationToken);
+            if (quiz == null)
             {
-                ProctoredQuiz quiz = dbContext.FindQuizWithQuestion(request.QuestionId);
-                if (quiz == null)
-                {
-                    throw new EntityNotFoundException("No Quiz with Question", request.QuestionId);
-                }
+                throw new EntityNotFoundException("No Quiz with Question", request.QuestionId);
+            }
 
-                quiz.RemoveQuestion(request.QuestionId);
-                dbContext.SaveChangesAsync();
+            quiz.RemoveQuestion(request.QuestionId);
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
-                return Unit.Value;
-            });
+            return Unit.Value;
         }
     }
 }

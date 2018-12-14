@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PopQuiz.Service.Quiz.Application.Models
 {
-    public class QuizListViewModel
+    public class GetListOfQuizesQueryResponse
     {
         public IEnumerable<QuizSummaryViewModel> QuizSummaries { get; set; }
     }
