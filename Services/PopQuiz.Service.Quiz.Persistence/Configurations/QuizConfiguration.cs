@@ -4,9 +4,9 @@ using PopQuiz.Service.Quiz.Domain.Entities;
 
 namespace PopQuiz.Service.Quiz.Persistence.Configurations
 {
-    public class QuizConfiguration : IEntityTypeConfiguration<ProctoredQuiz>
+    public class QuizConfiguration : IEntityTypeConfiguration<Domain.Entities.Quiz>
     {
-        public void Configure(EntityTypeBuilder<ProctoredQuiz> builder)
+        public void Configure(EntityTypeBuilder<Domain.Entities.Quiz> builder)
         {
             builder.HasKey(entity => entity.Id);
             builder.Property(entity => entity.Id)
@@ -22,7 +22,7 @@ namespace PopQuiz.Service.Quiz.Persistence.Configurations
                 .HasColumnName("Description")
                 .HasColumnType("nvarchar(500)");
 
-            builder.Metadata.FindNavigation(nameof(ProctoredQuiz.Questions))
+            builder.Metadata.FindNavigation(nameof(Domain.Entities.Quiz.Questions))
                 .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }

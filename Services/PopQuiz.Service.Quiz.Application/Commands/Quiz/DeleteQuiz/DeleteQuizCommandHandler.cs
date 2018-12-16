@@ -19,7 +19,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.DeleteQuiz
 
         public async Task<Unit> Handle(DeleteQuizCommand request, CancellationToken cancellationToken)
         {
-           ProctoredQuiz quiz = await dbContext.FindQuizAsync(request.QuizId, cancellationToken);
+           Domain.Entities.Quiz quiz = await dbContext.FindQuizAsync(request.QuizId, cancellationToken);
 
            if (quiz == null)
            {

@@ -1,0 +1,9 @@
+﻿namespace PopQuiz.Service.Quiz.Application.Models
+{
+    public class ChoiceViewModel
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public bool IsCorrect { get; set; }
+    }
+}

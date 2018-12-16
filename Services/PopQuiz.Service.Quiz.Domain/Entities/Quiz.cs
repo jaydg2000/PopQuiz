@@ -1,29 +1,26 @@
-﻿using System;
-using PopQuiz.Service.Common.Domain.Infrastructure;
+﻿using PopQuiz.Service.Common.Domain.Infrastructure;
 using PopQuiz.Service.Common.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using PopQuiz.Service.Common.Infrastructure;
 
 namespace PopQuiz.Service.Quiz.Domain.Entities
 {
-    // TODO: come up iwth better name than ProctoredQuiz
-    public class ProctoredQuiz : DomainEntity
+    public class Quiz : DomainEntity
     {
-        private List<Question> _questions;
+        private readonly List<Question> _questions;
         public string Name { get; set; }
         public string Description { get; set; }
         public IEnumerable<Question> Questions => _questions;
 
-        private ProctoredQuiz():this(0,string.Empty) { }
+        private Quiz():this(0,string.Empty) { }
 
-        public ProctoredQuiz(string name, string description = "")
+        public Quiz(string name, string description = "")
             : this(0, name, description)
         {
         }
 
-        public ProctoredQuiz(int id, string name, string description = "")
+        public Quiz(int id, string name, string description = "")
             : base(id)
         {            
             this.Name = name;
@@ -46,7 +43,7 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
 
         public void RemoveQuestion(int id)
         {
-            var questionToRemove = Questions.FirstOrDefault(q => q.Id == id);
+            var questionToRemove = _questions.FirstOrDefault(q => q.Id == id);
 
             if (questionToRemove == null)
             {
@@ -66,7 +63,6 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
             question.Text = text;
         }
 
-        
         #endregion Operations on Questions
 
         #region Operations on Choices

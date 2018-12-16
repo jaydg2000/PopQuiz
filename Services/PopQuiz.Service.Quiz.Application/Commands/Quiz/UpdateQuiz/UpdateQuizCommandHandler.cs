@@ -29,7 +29,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.UpdateQuiz
             return Unit.Value;
         }
 
-        private void Ensure(ProctoredQuiz quiz, int quizId)
+        private void Ensure(Domain.Entities.Quiz quiz, int quizId)
         {
             if (quiz == null)
             {

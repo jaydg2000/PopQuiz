@@ -11,7 +11,9 @@ using PopQuiz.Service.Quiz.Application.Commands.UpdateQuiz;
 using PopQuiz.Service.Quiz.Application.Models;
 using PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
 using PopQuiz.Service.Quiz.Application.Commands.UpdateChoice;
+using PopQuiz.Service.Quiz.Application.Queries.GetListOfQuestions;
 
 namespace PopQuiz.Service.Quiz.Controllers
 {
@@ -56,6 +58,14 @@ namespace PopQuiz.Service.Quiz.Controllers
 
             await Mediator.Send(command);
             return NoContent();
+        }
+
+        [HttpGet]
+        [Route("{quizId}/question")]
+        public async Task<IActionResult> GetListOfQuesions(int quizId)
+        {
+            Expect(quizId, c => c > 0);
+            return Ok(await Mediator.Send(new GetListOfQuestionsQuery() {QuizId = quizId}));
         }
 
         [HttpPost]

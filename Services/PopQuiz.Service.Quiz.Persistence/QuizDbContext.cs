@@ -18,7 +18,7 @@ namespace PopQuiz.Service.Quiz.Persistence
         {
         }
 
-        public DbSet<ProctoredQuiz> Quizes { get; set; }
+        public DbSet<Domain.Entities.Quiz> Quizes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -28,7 +28,7 @@ namespace PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes
             };
         }
 
-        private static Task<List<QuizSummaryViewModel>> CreateListOfQuizSummaries(IEnumerable<ProctoredQuiz> quizList)
+        private static Task<List<QuizSummaryViewModel>> CreateListOfQuizSummaries(IEnumerable<Domain.Entities.Quiz> quizList)
         {
             return Task.Run(() => (from quiz in quizList.AsParallel()
                                    select new QuizSummaryViewModel()

@@ -45,7 +45,7 @@ namespace PopQuiz.Service.Quiz.Persistence.Migrations
                     b.ToTable("Choice");
                 });
 
-            modelBuilder.Entity("PopQuiz.Service.Quiz.Domain.Entities.ProctoredQuiz", b =>
+            modelBuilder.Entity("PopQuiz.Service.Quiz.Domain.Entities.Quiz", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -98,7 +98,7 @@ namespace PopQuiz.Service.Quiz.Persistence.Migrations
 
             modelBuilder.Entity("PopQuiz.Service.Quiz.Domain.Entities.Question", b =>
                 {
-                    b.HasOne("PopQuiz.Service.Quiz.Domain.Entities.ProctoredQuiz", "Quiz")
+                    b.HasOne("PopQuiz.Service.Quiz.Domain.Entities.Quiz", "Quiz")
                         .WithMany("Questions")
                         .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade);

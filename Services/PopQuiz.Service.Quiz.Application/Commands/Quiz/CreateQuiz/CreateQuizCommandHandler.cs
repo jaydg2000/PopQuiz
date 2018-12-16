@@ -18,7 +18,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.CreateQuiz
 
         public async Task<CreateQuizCommandResponse> Handle(CreateQuizCommand request, CancellationToken cancellationToken)
         {
-            var quiz = new ProctoredQuiz(request.Name, request.Description);
+            var quiz = new Domain.Entities.Quiz(request.Name, request.Description);
             await _dbContext.Quizes.AddAsync(quiz, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
 

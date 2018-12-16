@@ -10,7 +10,7 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
         private List<Choice> choices;
 
         public string Text { get; set; }
-        public ProctoredQuiz Quiz { get; set; }
+        public Quiz Quiz { get; set; }
         public IEnumerable<Choice> Choices => choices;
 
         private Question(): this(0, string.Empty) { }

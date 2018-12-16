@@ -49,7 +49,7 @@ namespace PopQuiz.Service.Quiz.Application.Commands.AddQuestion
                 select new Tuple<string, bool>(choice.Text, choice.IsCorrect);
         }
         
-        private static void Ensure(ProctoredQuiz quiz, int quizId)
+        private static void Ensure(Domain.Entities.Quiz quiz, int quizId)
         {
             if (quiz == null)
             {

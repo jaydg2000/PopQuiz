@@ -8,14 +8,14 @@ namespace PopQuiz.Service.Quiz.Domain.Test.Entities
 {
     public class QuizTests
     {
-        private ProctoredQuiz target;
+        private Domain.Entities.Quiz target;
         private int id = 1;
         private string name = "Name";
         private string description = "Description";
 
         public QuizTests()
         {
-            target = new ProctoredQuiz(id, name, description);
+            target = new Domain.Entities.Quiz(id, name, description);
         }
 
         [Fact]
