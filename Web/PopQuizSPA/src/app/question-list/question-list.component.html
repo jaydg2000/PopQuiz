@@ -1,0 +1,6 @@
+<ul *ngIf="!_showExpand">
+  <li *ngFor="let question of questions">
+    {{question.text}}
+    <popquiz-choice-list [choices]="question.choices"></popquiz-choice-list>
+  </li>
+</ul>

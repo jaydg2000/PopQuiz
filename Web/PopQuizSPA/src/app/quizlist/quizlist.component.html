@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let quiz of _quizes">
+    <button (click)="questionList._showExpand=!questionList._showExpand; questionList.loadQuestions($event);">{{questionList._showExpand?"+":"-"}}</button>
+    <div>{{quiz.name}}</div>
+    <div><popquiz-question-list #questionList [quizId]="quiz.id"></popquiz-question-list></div>
+  </li>
+</ul>
