@@ -9,21 +9,21 @@ import { DataService } from 'src/app/shared/dataservice/data.service';
 })
 export class QuizListComponent implements OnInit {
 
-  private _quizes: QuizSelection[];
-  private _showExpand: boolean;
+  public quizes: QuizSelection[];
+  public showExpand: boolean;
 
   constructor(private _dataService: DataService) { }
 
   ngOnInit() {
-    this._showExpand = true;
+    this.showExpand = true;
     this._dataService.getQuizes().subscribe(
       data => {
-        this._quizes = data.quizSummaries;
+        this.quizes = data.quizSummaries;
       }
     );
   }
 
   private toggleExpandIcon() {
-    this._showExpand = !this._showExpand;
+    this.showExpand = !this.showExpand;
   }
 }

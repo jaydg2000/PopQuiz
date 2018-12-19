@@ -1,0 +1,19 @@
+.quiz-row {
+  display: inline;
+}
+
+.quiz-name {
+  display: inline;
+  margin: 5px;
+}
+
+.quiz-button {
+  height: 16px;
+  width: 16px;
+  padding: 0px;
+  text-align: center;
+}
+
+.quiz-container {
+  padding: 10px;
+}

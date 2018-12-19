@@ -14,10 +14,10 @@ export class DataService {
   constructor(private _http: HttpClient) { }
 
   getQuizes(): Observable<IGetQuizesResponse> {
-    return this._http.get('http://localhost:4201/api/quiz');
+    return this._http.get<IGetQuizesResponse>('http://localhost:4201/api/quiz');
   }
 
   getQuestions(quizId: number): Observable<IGetQuestionsResponse> {
-    return this._http.get('http://localhost:4201/api/quiz/' + quizId + '/question');
+    return this._http.get<IGetQuestionsResponse>('http://localhost:4201/api/quiz/' + quizId + '/question');
   }
 }
