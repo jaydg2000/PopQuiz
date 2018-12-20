@@ -10,21 +10,32 @@ import { DataService } from 'src/app/shared/dataservice/data.service';
 })
 export class QuestionListComponent implements OnInit {
 
-  _showExpand: boolean;
+  _showExpand = true;
   @Input() quizId: number;
   questions: Question[];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this._showExpand = true;
   }
 
-  public loadQuestions(event: any) {
+  public onToggleClick($event) {
+    this.toggleExpand();
+    this.loadQuestions();
+  }
+
+  private loadQuestions() {
     this.dataService.getQuestions(this.quizId).subscribe(
       data => {
         this.questions = data.questions;
       }
     );
+  }
+
+  private toggleExpand() {
+    this._showExpand = !this._showExpand;
+    if (this.questions == null) {
+      this.loadQuestions();
+    }
   }
 }

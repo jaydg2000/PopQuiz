@@ -1,9 +1,10 @@
-<ul>
-  <li *ngFor="let quiz of quizes">
-    <div class="quiz-container">
-      <div class="quiz-row"><button class="quiz-button" (click)="questionList._showExpand=!questionList._showExpand; questionList.loadQuestions($event);">{{questionList._showExpand?"+":"-"}}</button></div>
-      <div class="quiz-name">{{quiz.name}}</div>
-      <div><popquiz-question-list #questionList [quizId]="quiz.id"></popquiz-question-list></div>
+<div *ngFor="let quiz of quizes">
+  <div class="quiz-container">
+    <div class="well well-sm quiz-row" (click)="questionList.onToggleClick($event);">
+        <div class="quiz-name dt">{{quiz.name}}</div>
+        <span [ngClass]="{'quiz-chevron':true, 'glyphicon':true, 'glyphicon-chevron-down':questionList._showExpand, 'glyphicon-chevron-up':!questionList._showExpand}"></span>
     </div>
-  </li>
-</ul>
+    <div><popquiz-question-list #questionList [quizId]="quiz.id"></popquiz-question-list></div>
+  </div>
+</div>
+

@@ -10,12 +10,12 @@ import { DataService } from 'src/app/shared/dataservice/data.service';
 export class QuizListComponent implements OnInit {
 
   public quizes: QuizSelection[];
-  public showExpand: boolean;
+  // public showExpand: boolean;
 
   constructor(private _dataService: DataService) { }
 
   ngOnInit() {
-    this.showExpand = true;
+    // this.showExpand = true;
     this._dataService.getQuizes().subscribe(
       data => {
         this.quizes = data.quizSummaries;
@@ -23,7 +23,7 @@ export class QuizListComponent implements OnInit {
     );
   }
 
-  private toggleExpandIcon() {
-    this.showExpand = !this.showExpand;
-  }
+  // private toggleExpandIcon() {
+  //   this.showExpand = !this.showExpand;
+  // }
 }

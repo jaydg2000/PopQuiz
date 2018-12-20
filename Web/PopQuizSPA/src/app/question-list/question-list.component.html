@@ -1,6 +1,8 @@
-<ul *ngIf="!_showExpand">
-  <li *ngFor="let question of questions">
-    {{question.text}}
-    <popquiz-choice-list [choices]="question.choices"></popquiz-choice-list>
-  </li>
-</ul>
+<div *ngIf="!_showExpand">
+  <div *ngFor="let question of questions">
+    <div class="panel panel-default question-panel">
+      <div class="panel-heading">{{question.text}}</div>
+      <div class="panel-body"><popquiz-choice-list [choices]="question.choices"></popquiz-choice-list></div>
+  </div>
+</div>
+</div>

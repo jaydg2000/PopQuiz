@@ -1,8 +1,10 @@
-<ul>
-  <li *ngFor="let choice of choices">
-    <div class="choice-row" *ngIf="choice.isCorrect"><img class="choice-icon" src="../../assets/right-answer-icon.png"></div>
-    <div class="choice-row" *ngIf="!choice.isCorrect"><img class="choice-icon" src="../../assets/wrong-answer-icon.png"></div>
-    <div class="choice-text">{{choice.text}}</div>
-  </li>
-</ul>
+<dl>
+  <dt *ngFor="let choice of choices">
+    <div class="choice-row">
+      <div style="display:inline" *ngIf="choice.isCorrect"><img class="choice-icon" src="../../assets/right-answer-icon.png"></div>
+      <div style="display:inline" *ngIf="!choice.isCorrect"><img class="choice-icon" src="../../assets/wrong-answer-icon.png"></div>
+      <div class="choice-text">{{choice.text}}</div>
+    </div>
+  </dt>
+</dl>
 

@@ -3,15 +3,12 @@
 }
 
 .choice-icon {
+  display: inline;
   height: 16px;
   width: 16px;
-  border: 2px;
-  border-color: black;
 }
 
 .choice-text {
   display: inline;
-  margin: 5px;
-  font-size: 18px;
-
+  margin: 10px;
 }
