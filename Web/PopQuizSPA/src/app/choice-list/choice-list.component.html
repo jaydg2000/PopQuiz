@@ -1,9 +1,10 @@
 <dl>
   <dt *ngFor="let choice of choices">
     <div class="choice-row">
-      <div style="display:inline" *ngIf="choice.isCorrect"><img class="choice-icon" src="../../assets/right-answer-icon.png"></div>
-      <div style="display:inline" *ngIf="!choice.isCorrect"><img class="choice-icon" src="../../assets/wrong-answer-icon.png"></div>
-      <div class="choice-text">{{choice.text}}</div>
+      <div class="choice-correct-icon" (click)="toggleCorrectness(choice)" *ngIf="choice.isCorrect"><img class="choice-icon" src="../../assets/right-answer-icon.png"></div>
+      <div class="choice-correct-icon" (click)="toggleCorrectness(choice)" *ngIf="!choice.isCorrect"><img class="choice-icon" src="../../assets/wrong-answer-icon.png"></div>
+      <div class="choice-text modifiable" [hidden]="choiceEditor.isEditMode">{{choice.text}}<span class="glyphicon glyphicon-pencil tool-icon" (click)="choiceEditor.onEditChoiceClick($event)"></span></div>
+      <div class="choice-editor"><popquiz-edit-choice #choiceEditor style="display: inline" [hidden]="!choiceEditor.isEditMode" [quizId]="this.quizId" [questionId]="this.questionId" [choice]="choice"></popquiz-edit-choice></div>
     </div>
   </dt>
 </dl>

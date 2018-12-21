@@ -18,11 +18,11 @@ namespace PopQuiz.Service.Quiz.Application.Commands.UpdateQuiz
 
         public async Task<Unit> Handle(UpdateQuizCommand request, CancellationToken cancellationToken)
         {
-            var quiz = await _dbContext.FindQuizAsync(request.QuizId, cancellationToken);
-            Ensure(quiz, request.QuizId);
+            var quiz = await _dbContext.FindQuizAsync(request.Id, cancellationToken);
+            Ensure(quiz, request.Id);
 
-            quiz.Name = request.NewName;
-            quiz.Description = request.NewDescription;
+            quiz.Name = request.Name;
+            quiz.Description = request.Description;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

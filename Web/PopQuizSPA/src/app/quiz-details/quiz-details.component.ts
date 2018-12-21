@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/shared/dataservice/data.service';
+import { QuizService } from 'src/app/shared/dataservice/quiz.service';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class QuizDetailsComponent implements OnInit {
 
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: QuizService) { }
 
   ngOnInit() {
   }

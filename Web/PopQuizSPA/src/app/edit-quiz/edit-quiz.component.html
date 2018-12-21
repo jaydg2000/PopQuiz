@@ -1,0 +1,10 @@
+<input
+  #quizName
+  id="quiz-name"
+  type="text"
+  value="{{quiz.name}}"
+  autofocus
+  class="form-control"
+  (keyup.enter)="onEnter(quizName.value)"
+  (keyup.escape)="cancelUpdate()"
+  (focusout)="cancelUpdate()">

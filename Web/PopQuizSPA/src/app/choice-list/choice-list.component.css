@@ -3,7 +3,6 @@
 }
 
 .choice-icon {
-  display: inline;
   height: 16px;
   width: 16px;
 }
@@ -11,4 +10,12 @@
 .choice-text {
   display: inline;
   margin: 10px;
+}
+
+.choice-correct-icon {
+  display: inline;
+}
+
+.choice-editor {
+  display: inline;
 }

@@ -1,0 +1,11 @@
+<div *ngFor="let quiz of quizes">
+  <div class="quiz-container">
+    <div class="well well-sm quiz-row modifiable">
+        <div><popquiz-edit-quiz #quizEditor [quiz]="quiz" [hidden]="!quizEditor.isEditMode"></popquiz-edit-quiz></div>
+        <div class="quiz-name dt" [hidden]="quizEditor.isEditMode">{{quiz.name}}<span class="glyphicon glyphicon-pencil tool-icon" (click)="quizEditor.onEditQuizClick($event)"></span></div>
+        <span [hidden]="quizEditor.isEditMode" [ngClass]="{'quiz-chevron':true, 'glyphicon':true, 'glyphicon-chevron-down':questionList.showExpand, 'glyphicon-chevron-up':!questionList.showExpand}" (click)="questionList.onToggleClick($event);"></span>
+    </div>
+    <div><popquiz-question-list #questionList [quizId]="quiz.id"></popquiz-question-list></div>
+  </div>
+</div>
+

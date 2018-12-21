@@ -40,7 +40,7 @@ namespace PopQuiz.Service.Quiz.Controllers
         public async Task<IActionResult> UpdateQuiz(int quizId, [FromBody] UpdateQuizCommand updateQuizCommand)
         {
             Expect(updateQuizCommand, c => c != null);
-            Expect(updateQuizCommand, c => c.QuizId == quizId);
+            Expect(updateQuizCommand, c => c.Id == quizId);
 
             await Mediator.Send(updateQuizCommand);
             return NoContent();

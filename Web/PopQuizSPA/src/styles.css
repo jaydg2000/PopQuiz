@@ -6,3 +6,14 @@ ul {
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+
+.tool-icon {
+  padding:10px;
+  display: none;
+}
+
+.modifiable:hover .tool-icon {
+  display: inline;
+}
+
+[hidden]{display:none!important};

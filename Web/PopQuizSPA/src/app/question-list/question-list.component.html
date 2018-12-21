@@ -1,8 +1,12 @@
-<div *ngIf="!_showExpand">
+<div *ngIf="!showExpand">
   <div *ngFor="let question of questions">
     <div class="panel panel-default question-panel">
-      <div class="panel-heading">{{question.text}}</div>
-      <div class="panel-body"><popquiz-choice-list [choices]="question.choices"></popquiz-choice-list></div>
+      <div class="panel-heading modifiable">
+        <div [hidden]="questionEditor.isEditMode">{{question.text}}<span class="glyphicon glyphicon-pencil tool-icon" (click)="questionEditor.onEditQuestionClick($event)"></span></div>
+        <div><popquiz-edit-question #questionEditor style="display: inline" [hidden]="!questionEditor.isEditMode" [quizId]="quizId" [question]="question"></popquiz-edit-question></div>
+      </div>
+      <div class="panel-body"><popquiz-choice-list [quizId]="quizId" [questionId]="question.id" [choices]="question.choices"></popquiz-choice-list></div>
+    </div>
   </div>
-</div>
+  <button class="btn add-question-button"><span class="glyphicon glyphicon-plus"></span></button>
 </div>

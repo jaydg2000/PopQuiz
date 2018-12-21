@@ -19,7 +19,7 @@ namespace PopQuiz.Service.Quiz.Application.Test.Commands
         [InlineData("#$()!.-+=,&")]
         public void Validate_ValidName_DoesNotFail(string value)
         {
-            validator.ShouldNotHaveValidationErrorFor(e => e.NewName, value);
+            validator.ShouldNotHaveValidationErrorFor(e => e.Name, value);
         }
 
         [Theory]
@@ -29,7 +29,7 @@ namespace PopQuiz.Service.Quiz.Application.Test.Commands
         [InlineData("123456789012345678901234567890123456789012345678901234567890")]
         public void Validate_InvalidName_Fails(string value)
         {
-            validator.ShouldHaveValidationErrorFor(e => e.NewName, value);
+            validator.ShouldHaveValidationErrorFor(e => e.Name, value);
         }
 
         [Theory]
@@ -37,7 +37,7 @@ namespace PopQuiz.Service.Quiz.Application.Test.Commands
         [InlineData("This is a description.")]
         public void Validate_ValidDescription_DoesNotFail(string value)
         {
-            validator.ShouldNotHaveValidationErrorFor(e => e.NewDescription, value);
+            validator.ShouldNotHaveValidationErrorFor(e => e.Description, value);
         }
     }
 }

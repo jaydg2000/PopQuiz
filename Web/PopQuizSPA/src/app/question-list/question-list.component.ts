@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Question } from 'src/app/shared/question.model';
-import { DataService } from 'src/app/shared/dataservice/data.service';
+import { QuizService } from 'src/app/shared/quiz-service/quiz.service';
 
 @Component({
   selector: 'popquiz-question-list',
@@ -10,22 +10,25 @@ import { DataService } from 'src/app/shared/dataservice/data.service';
 })
 export class QuestionListComponent implements OnInit {
 
-  _showExpand = true;
   @Input() quizId: number;
-  questions: Question[];
 
-  constructor(private dataService: DataService) { }
+  questions: Question[];
+  showExpand = true;
+
+  constructor(private quizService: QuizService) { }
 
   ngOnInit() {
   }
 
   public onToggleClick($event) {
     this.toggleExpand();
-    this.loadQuestions();
+    if (this.questions == null) {
+      this.loadQuestions();
+    }
   }
 
   private loadQuestions() {
-    this.dataService.getQuestions(this.quizId).subscribe(
+    this.quizService.getQuestions(this.quizId).subscribe(
       data => {
         this.questions = data.questions;
       }
@@ -33,9 +36,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   private toggleExpand() {
-    this._showExpand = !this._showExpand;
-    if (this.questions == null) {
-      this.loadQuestions();
-    }
+    this.showExpand = !this.showExpand;
   }
 }
