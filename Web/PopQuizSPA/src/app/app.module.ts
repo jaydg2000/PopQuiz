@@ -9,9 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { QuizDetailsComponent } from './quiz-details/quiz-details.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { ChoiceListComponent } from './choice-list/choice-list.component';
-import { EditQuizComponent } from './edit-quiz/edit-quiz.component';
-import { EditChoiceComponent } from './edit-choice/edit-choice.component';
-import { EditQuestionComponent } from './edit-question/edit-question.component';
+import { LabelEditorComponent } from './shared/label-editor/label-editor.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +19,7 @@ import { EditQuestionComponent } from './edit-question/edit-question.component';
     QuizDetailsComponent,
     QuestionListComponent,
     ChoiceListComponent,
-    EditQuizComponent,
-    EditChoiceComponent,
-    EditQuestionComponent
+    LabelEditorComponent,
   ],
   imports: [
     BrowserModule,

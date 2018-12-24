@@ -8,6 +8,9 @@ import { Choice } from '../choice.model';
 import { UpdateChoiceRequest } from './models/update-choice-request';
 import { UpdateQuestionRequest } from './models/update-question-request';
 import { Question } from '../question.model';
+import { AddQuestionRequest } from './models/add-question-request';
+import { AddQuestionChoiceRequest } from './models/add-question-choice-request';
+import { AddChoiceRequest } from './models/add-choice-request';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +40,38 @@ export class QuizService {
       options);
   }
 
+  createQuestion(quizId: number, question: Question): Observable<AddQuestionRequest> {
+    const choice1 = new AddQuestionChoiceRequest();
+    choice1.text = question.choices[0].text;
+    choice1.isCorrect = question.choices[0].isCorrect;
+    const choice2 = new AddQuestionChoiceRequest();
+    choice2.text = question.choices[1].text;
+    choice2.isCorrect = question.choices[1].isCorrect;
+
+    const request = new AddQuestionRequest();
+    request.quizId = quizId;
+    request.text = question.text;
+    request.answers = [choice1, choice2];
+
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
+
+    return this._http.post<AddQuestionRequest>(
+      'http://localhost:4201/api/quiz/' + quizId + '/question/',
+      request,
+      options);
+  }
+
+  deleteQuestion(quizId: number, questionId: number): Observable<{}> {
+    return this._http.delete('http://localhost:4201/api/quiz/' + quizId + '/question/' + questionId);
+  }
+
+  createChoice(quizId: number, questionId: number, choice: Choice): Observable<{}> {
+    const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
+    return this._http.post(
+      'http://localhost:4201/api/quiz/' + quizId + '/question/' + questionId + '/choice/',
+      this.buildAddChoiceRequest(quizId, questionId, choice));
+  }
+
   updateChoice(quizId: number, questionId: number, updatedChoice: Choice): Observable<Choice> {
     const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
     return this._http.put<Choice>(
@@ -63,4 +98,12 @@ export class QuizService {
     return request;
   }
 
+  private buildAddChoiceRequest(quizId: number, questionId: number, choice: Choice) {
+    const request = new AddChoiceRequest();
+    request.quizId = quizId;
+    request.questionId = questionId;
+    request.text = choice.text;
+    request.isCorrect = choice.isCorrect;
+    return request;
+  }
 }

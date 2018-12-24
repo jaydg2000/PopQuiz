@@ -1,9 +1,0 @@
-<input #choiceText
-  type="text"
-  value="{{choice.text}}"
-  autofocus
-  style="display: inline"
-  class="form-control"
-  (keyup.enter)="onEnter(choiceText.value)"
-  (keyup.escape)="cancelUpdate()"
-  (focusout)="cancelUpdate()">

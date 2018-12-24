@@ -62,7 +62,7 @@ namespace PopQuiz.Service.Quiz.Controllers
 
         [HttpGet]
         [Route("{quizId}/question")]
-        public async Task<IActionResult> GetListOfQuesions(int quizId)
+        public async Task<IActionResult> GetListOfQuestions(int quizId)
         {
             Expect(quizId, c => c > 0);
             return Ok(await Mediator.Send(new GetListOfQuestionsQuery() {QuizId = quizId}));

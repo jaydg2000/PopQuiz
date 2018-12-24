@@ -16,4 +16,9 @@ body {
   display: inline;
 }
 
+.add-item-button {
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
 [hidden]{display:none!important};

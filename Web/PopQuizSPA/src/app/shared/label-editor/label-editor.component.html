@@ -1,0 +1,11 @@
+<input #editText
+  type="text"
+  value="{{value}}"
+  autofocus
+  style="display: inline"
+  class="form-control"
+  [hidden]="!isEditMode"
+  (keyup.enter)="onEnter(editText.value)"
+  (keyup.tab)="onEnter(editText.value)"
+  (keyup.escape)="onCancel()"
+  (focusout)="onCancel()">

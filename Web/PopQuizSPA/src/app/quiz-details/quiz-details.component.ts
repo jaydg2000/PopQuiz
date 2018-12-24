@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from 'src/app/shared/dataservice/quiz.service';
+import { QuizService } from 'src/app/shared/quiz-service/quiz.service';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({

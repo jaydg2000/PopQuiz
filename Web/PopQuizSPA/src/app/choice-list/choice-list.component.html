@@ -1,11 +1,17 @@
-<dl>
-  <dt *ngFor="let choice of choices">
+<ul>
+  <li *ngFor="let choice of choices">
     <div class="choice-row">
       <div class="choice-correct-icon" (click)="toggleCorrectness(choice)" *ngIf="choice.isCorrect"><img class="choice-icon" src="../../assets/right-answer-icon.png"></div>
       <div class="choice-correct-icon" (click)="toggleCorrectness(choice)" *ngIf="!choice.isCorrect"><img class="choice-icon" src="../../assets/wrong-answer-icon.png"></div>
-      <div class="choice-text modifiable" [hidden]="choiceEditor.isEditMode">{{choice.text}}<span class="glyphicon glyphicon-pencil tool-icon" (click)="choiceEditor.onEditChoiceClick($event)"></span></div>
-      <div class="choice-editor"><popquiz-edit-choice #choiceEditor style="display: inline" [hidden]="!choiceEditor.isEditMode" [quizId]="this.quizId" [questionId]="this.questionId" [choice]="choice"></popquiz-edit-choice></div>
+      <div class="choice-text modifiable" [hidden]="choiceEditor.isEditMode">
+        {{choice.text}}
+        <span class="glyphicon glyphicon-pencil tool-icon" (click)="choiceEditor.show()"></span>
+        <span class="glyphicon glyphicon-trash tool-icon"></span>
+      </div>
+      <div class="choice-editor">
+        <popquiz-label-editor #choiceEditor [value]="choice.text" (valueChanged)="onChoiceTextChanged($event)" [payload]="choice"></popquiz-label-editor>
+      </div>
     </div>
-  </dt>
-</dl>
-
+  </li>
+</ul>
+<button class="btn add-item-button" (click)="onAddChoiceClick()"><span class="glyphicon glyphicon-plus"></span></button>

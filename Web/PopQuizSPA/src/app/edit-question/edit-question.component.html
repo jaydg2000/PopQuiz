@@ -1,9 +1,0 @@
-<input
-  #questionText
-  type="text"
-  value="{{question.text}}"
-  autofocus
-  class="form-control"
-  (keyup.enter)="onEnter(questionText.value)"
-  (keyup.escape)="cancelUpdate()"
-  (focusout)="cancelUpdate()">
