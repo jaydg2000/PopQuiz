@@ -80,6 +80,10 @@ export class QuizService {
       options);
   }
 
+  deleteChoice(quizId: number, questionId: number, choiceId: number): Observable<{}> {
+    return this._http.delete('http://localhost:4201/api/quiz/' + quizId + '/question/' + questionId + '/choice/' + choiceId);
+  }
+
   private buildUpdateQuestionRequest(quizId: number, question: Question) {
     const request = new UpdateQuestionRequest();
     request.quizId = quizId;

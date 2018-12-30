@@ -1,7 +1,7 @@
-import { AddChoiceRequest } from './add-question-choice-request';
+import { AddQuestionChoiceRequest } from './add-question-choice-request';
 
 export class AddQuestionRequest {
   quizId: number;
   text: string;
-  answers: AddChoiceRequest[];
+  answers: AddQuestionChoiceRequest[];
 }

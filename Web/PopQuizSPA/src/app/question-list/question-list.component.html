@@ -5,7 +5,7 @@
         <div [hidden]="questionEditor.isEditMode">
           {{question.text}}
           <span class="glyphicon glyphicon-pencil tool-icon" (click)="questionEditor.show()"></span>
-          <span class="glyphicon glyphicon-trash tool-icon" data-toggle="modal" data-target="#confirmDeleteModal" (click)="onDeleteQuestionClick(question.id)"></span>
+          <span class="glyphicon glyphicon-trash tool-icon" data-toggle="modal" data-target="#confirmDeleteModal_qs" (click)="onDeleteQuestionClick(question.id)"></span>
         </div>
         <div>
           <popquiz-label-editor #questionEditor [value]="question.text" (valueChanged)="onQuestionTextChanged($event)" [payload]="question"></popquiz-label-editor>
@@ -15,26 +15,5 @@
     </div>
   </div>
   <button class="btn add-item-button" (click)="onAddQuestionClick()"><span class="glyphicon glyphicon-plus"></span></button>
+  <popquiz-item-deleter #itemDeleter suffix="qs" message="Are you sure you wish to delete this question?" (confirmed)="onDeleteQuestion()"></popquiz-item-deleter>
 </div>
-
-<!-- Confirm delete question modal -->
-<div id="confirmDeleteModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Warning</h4>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to remove this question?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="deleteQuestion()">Yes</button>
-        </div>
-      </div>
-
-    </div>
-  </div>

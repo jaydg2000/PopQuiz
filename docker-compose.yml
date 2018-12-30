@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  popquiz.service.quiz:
+    image: ${DOCKER_REGISTRY-}popquizservicequiz
+    build:
+      context: .
+      dockerfile: Services\PopQuiz.Service.Quiz\Dockerfile

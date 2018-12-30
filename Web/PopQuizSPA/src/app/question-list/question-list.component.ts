@@ -61,7 +61,7 @@ export class QuestionListComponent implements OnInit {
     this._questionIdForDelete = questionId;
   }
 
-  private deleteQuestion() {
+  private onDeleteQuestion() {
     this._quizService.deleteQuestion(this.quizId, this._questionIdForDelete).subscribe(
       () => this.loadQuestions()
     );

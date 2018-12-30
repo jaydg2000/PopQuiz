@@ -11,8 +11,8 @@ export class LabelEditorComponent implements OnInit {
   @Input() value: string;
   @Input() payload: any;
 
-  @Output() valueChanged = new EventEmitter<ILabelEditorValueChanged>;
-  @Output() cancelChange = new EventEmitter<{}>;
+  @Output() valueChanged = new EventEmitter<ILabelEditorValueChanged>();
+  @Output() canceledChange = new EventEmitter<{}>();
 
   private _isEditMode = false;
 
@@ -39,6 +39,6 @@ export class LabelEditorComponent implements OnInit {
 
   public onCancel() {
     this._isEditMode = false;
-    this.cancelChange.emit();
+    this.canceledChange.emit();
   }
 }

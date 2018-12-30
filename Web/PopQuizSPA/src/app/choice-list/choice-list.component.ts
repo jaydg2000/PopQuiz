@@ -15,6 +15,8 @@ export class ChoiceListComponent implements OnInit {
   @Input() public questionId: number;
   @Input() public choices: Choice[];
 
+  private _choiceIdForDelete: number;
+
   constructor(private _quizService: QuizService) { }
 
   ngOnInit() {
@@ -44,6 +46,18 @@ export class ChoiceListComponent implements OnInit {
     this._quizService.updateChoice(this.quizId, this.questionId, choice).subscribe(
       (success) => {},
       (error) => {}
+    );
+  }
+
+  public onDeleteChoiceClick(choiceId: number) {
+    this._choiceIdForDelete = choiceId;
+  }
+
+  public onDeleteChoice() {
+    this._quizService.deleteChoice(this.quizId, this.questionId, this._choiceIdForDelete).subscribe(
+      (success) => {
+        this.choices = this.choices.filter( (ch) => ch.id !== this._choiceIdForDelete );
+      }
     );
   }
 }

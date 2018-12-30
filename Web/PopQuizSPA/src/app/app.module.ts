@@ -10,6 +10,7 @@ import { QuizDetailsComponent } from './quiz-details/quiz-details.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { ChoiceListComponent } from './choice-list/choice-list.component';
 import { LabelEditorComponent } from './shared/label-editor/label-editor.component';
+import { ItemDeleterComponent } from './shared/item-deleter/item-deleter.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LabelEditorComponent } from './shared/label-editor/label-editor.compone
     QuestionListComponent,
     ChoiceListComponent,
     LabelEditorComponent,
+    ItemDeleterComponent
   ],
   imports: [
     BrowserModule,

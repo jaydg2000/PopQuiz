@@ -6,7 +6,7 @@
       <div class="choice-text modifiable" [hidden]="choiceEditor.isEditMode">
         {{choice.text}}
         <span class="glyphicon glyphicon-pencil tool-icon" (click)="choiceEditor.show()"></span>
-        <span class="glyphicon glyphicon-trash tool-icon"></span>
+        <span class="glyphicon glyphicon-trash tool-icon" data-toggle="modal" data-target="#confirmDeleteModal_ch" (click)="onDeleteChoiceClick(choice.id)"></span>
       </div>
       <div class="choice-editor">
         <popquiz-label-editor #choiceEditor [value]="choice.text" (valueChanged)="onChoiceTextChanged($event)" [payload]="choice"></popquiz-label-editor>
@@ -15,3 +15,4 @@
   </li>
 </ul>
 <button class="btn add-item-button" (click)="onAddChoiceClick()"><span class="glyphicon glyphicon-plus"></span></button>
+<popquiz-item-deleter #itemDeleter suffix="ch" message="Are you sure you wish to delete this choice?" (confirmed)="onDeleteChoice()"></popquiz-item-deleter>
