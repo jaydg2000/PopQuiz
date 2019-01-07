@@ -8,7 +8,7 @@ using System;
 namespace PopQuiz.Service.Common.Web.Controllers
 {
     [ValidationExceptionFilter]
-    public abstract class PopQuizServiceControllerBase : Controller
+    public abstract class PopQuizServiceControllerBase : ControllerBase
     {
         private IMediator mediator;
 

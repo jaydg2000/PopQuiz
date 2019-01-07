@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using PopQuiz.Service.Common.Web.Controllers;
 using PopQuiz.Service.Quiz.Application.Commands.AddQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.Choice.AddChoice;
@@ -6,14 +7,12 @@ using PopQuiz.Service.Quiz.Application.Commands.Choice.DeleteChoice;
 using PopQuiz.Service.Quiz.Application.Commands.CreateQuiz;
 using PopQuiz.Service.Quiz.Application.Commands.DeleteQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.DeleteQuiz;
+using PopQuiz.Service.Quiz.Application.Commands.UpdateChoice;
 using PopQuiz.Service.Quiz.Application.Commands.UpdateQuestion;
 using PopQuiz.Service.Quiz.Application.Commands.UpdateQuiz;
 using PopQuiz.Service.Quiz.Application.Models;
-using PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
-using PopQuiz.Service.Quiz.Application.Commands.UpdateChoice;
 using PopQuiz.Service.Quiz.Application.Queries.GetListOfQuestions;
+using PopQuiz.Service.Quiz.Application.Queries.GetListOfQuizes;
 
 namespace PopQuiz.Service.Quiz.Controllers
 {

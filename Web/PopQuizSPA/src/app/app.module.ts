@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { HttpClientModule } from '@angular/common/http';
