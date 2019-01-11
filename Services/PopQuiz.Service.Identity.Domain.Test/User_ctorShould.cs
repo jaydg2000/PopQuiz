@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Xunit;
+using static PopQuiz.Service.Identity.Domain.Role.RoleTypes;
 
 namespace PopQuiz.Service.Identity.Domain.Test
 {
@@ -18,14 +17,22 @@ namespace PopQuiz.Service.Identity.Domain.Test
             string firstName = "First";
             string lastName = "Last";
             IdentityToken token = new IdentityToken(userId);
-            var roles = new List<UserRole>(){UserRole.Guest};
+            var roles = GetUserRoles();
 
-            var target = new User(userId, firstName, lastName, token, roles);
+            var target = new User(1, userId, firstName, lastName, token, roles);
 
             Assert.Equal(userId, target.UserId);
             Assert.Equal(firstName, target.FirstName);
             Assert.Equal(lastName, target.LastName);
             Assert.NotEmpty(target.Token.Token);
+        }
+
+        private List<Role> GetUserRoles()
+        {
+            return new List<Role>()
+            {
+                new Role(Guest, "Guest")
+            };
         }
     }
 }

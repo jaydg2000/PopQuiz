@@ -4,11 +4,13 @@ using System.Text;
 
 namespace PopQuiz.Service.Identity.Domain
 {
-    public enum UserRole
+    public class UserRole
     {
-        Guest,
-        Admin,
-        QuizTaker,
-        QuizCreator
+        public int UserId { get; set; }
+        public int RoleId { get; set; }
+
+        public User User { get; set; }
+        public Role Role { get; set; }
+
     }
 }

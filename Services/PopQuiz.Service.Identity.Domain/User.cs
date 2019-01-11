@@ -1,37 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace PopQuiz.Service.Identity.Domain
 {
     public class User
     {
-        private readonly List<UserRole> _roles;
+        private readonly List<UserRole> _userRolesXRef;
 
-        public string UserId { get; }
-        public IdentityToken Token { get; }
-        public string FirstName { get; }
-        public string LastName { get; }
-        public IEnumerable<UserRole> Roles => _roles;
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public IdentityToken Token { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public IEnumerable<UserRole> UserRoles => _userRolesXRef;
+        public IEnumerable<Role> Roles => 
+            (from ur in _userRolesXRef
+            select ur.Role).ToList();
 
-        public User(string userId, string firstName, string lastName, IdentityToken token, IEnumerable<UserRole> roles = null)
+        private User()
         {
+        }
+
+        public User(int id, string userId, string firstName, string lastName, IdentityToken token, IEnumerable<Role> roles = null)
+        {
+            Id = id;
             UserId = userId;
             Token = token;
             FirstName = firstName;
             LastName = lastName;
 
-            _roles = new List<UserRole>();
+            _userRolesXRef = new List<UserRole>();
             if (roles != null)
             {
-                _roles.AddRange(roles);
+                Parallel.ForEach(roles, (role) => AddRole(role));
             }
         }
 
-        public void AddRole(UserRole role)
+        public void AddRole(Role role)
         {
-            _roles.Add(role);
+            UserRole userRole = new UserRole()
+            {
+                User = this,
+                UserId = this.Id,
+                Role = role,
+                RoleId = role.Id
+            };
+            _userRolesXRef.Add(userRole);
         }
-
+        
     }
 }

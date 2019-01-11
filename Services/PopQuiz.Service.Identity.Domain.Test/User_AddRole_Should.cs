@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
+using static PopQuiz.Service.Identity.Domain.Role.RoleTypes;
 
 namespace PopQuiz.Service.Identity.Domain.Test
 {
@@ -12,23 +12,29 @@ namespace PopQuiz.Service.Identity.Domain.Test
         public User_AddRole_Should()
         {
             var userId = "john123";
-            user = new User(userId, "John", "Doe", IdentityToken.Empty);
+            user = new User(1, userId, "John", "Doe", IdentityToken.Empty);
         }
 
         [Fact]
         public void AddInitialRoleToUser()
         {
-            user.AddRole(UserRole.Guest);
-            Assert.Contains(UserRole.Guest, user.Roles);
+            Role roleGuest = GetRole(Guest);
+            user.AddRole(roleGuest);
+            Assert.Contains(roleGuest, user.Roles);
         }
 
         [Fact]
         public void AddAdditionalRoleToUser()
         {
-            user.AddRole(UserRole.QuizTaker);
-            user.AddRole(UserRole.QuizCreator);
-            Assert.Contains(UserRole.QuizTaker, user.Roles);
-            Assert.Contains(UserRole.QuizCreator, user.Roles);
+            Role roleQuizTaker = GetRole(QuizTaker);
+            Role roleQuizCreator = GetRole(QuizCreator);
+            user.AddRole(roleQuizTaker);
+            user.AddRole(GetRole(QuizCreator));
+            Assert.Contains(roleQuizTaker, user.Roles);
+            Assert.Contains(roleQuizCreator, user.Roles);
         }
+
+        private Role GetRole(Role.RoleTypes roleType) 
+            => new Role(roleType, roleType.ToString());
     }
 }

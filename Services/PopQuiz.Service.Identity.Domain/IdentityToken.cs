@@ -7,6 +7,7 @@ namespace PopQuiz.Service.Identity.Domain
 {
     public class IdentityToken
     {
+        // TODO: regenerate and move to external secure storage.
         private static readonly string secret = "XCAP05H6LoKvbRRa/QkqLNMI7cOHguaRyHzyg7n5qEkGjQmtBhz4SzYh4Fqwjyi3KJHlSXKPwVu2+bXr6CtpgQ==";
         private string _token;
 
@@ -26,7 +27,9 @@ namespace PopQuiz.Service.Identity.Domain
 
         private void GenerateToken(string userId)
         {
+            // 64 bit encode secret.
             byte[] key = Convert.FromBase64String(secret);
+            // create symmetric key for encryption.
             var securityKey = new SymmetricSecurityKey(key);
             var descriptor = new SecurityTokenDescriptor
             {
