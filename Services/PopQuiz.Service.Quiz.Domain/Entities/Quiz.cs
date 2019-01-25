@@ -9,9 +9,10 @@ namespace PopQuiz.Service.Quiz.Domain.Entities
     public class Quiz : DomainEntity
     {
         private readonly List<Question> _questions;
+        public Author Author { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IEnumerable<Question> Questions => _questions;
+        public ICollection<Question> Questions => _questions;
 
         private Quiz():this(0,string.Empty) { }
 

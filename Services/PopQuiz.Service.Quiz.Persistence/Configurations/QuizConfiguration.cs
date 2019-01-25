@@ -24,6 +24,10 @@ namespace PopQuiz.Service.Quiz.Persistence.Configurations
 
             builder.Metadata.FindNavigation(nameof(Domain.Entities.Quiz.Questions))
                 .SetPropertyAccessMode(PropertyAccessMode.Field);
+
+            builder.HasOne(q => q.Author)
+                .WithMany(auth => auth.Quizes)
+                .IsRequired();
         }
     }
 }
