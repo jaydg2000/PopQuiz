@@ -6,10 +6,10 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.IdentityModel.Tokens">
-      <HintPath>C:\Users\Jay\.nuget\packages\microsoft.identitymodel.tokens\5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      <HintPath>..\..\..\..\Users\Admin\.nuget\packages\microsoft.identitymodel.tokens\5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
     <Reference Include="System.IdentityModel.Tokens.Jwt">
-      <HintPath>C:\Users\Jay\.nuget\packages\system.identitymodel.tokens.jwt\5.2.4\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <HintPath>..\..\..\..\Users\Admin\.nuget\packages\system.identitymodel.tokens.jwt\5.2.4\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
   </ItemGroup>
 
