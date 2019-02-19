@@ -22,6 +22,11 @@ namespace PopQuiz.Service.Identity.Persistence.Configurations
                 .IsRequired()
                 .HasMaxLength(50);
 
+            builder.Property(e => e.Password)
+                .HasColumnName("password")
+                .IsRequired()
+                .HasMaxLength(50);
+
             builder.Property(e => e.FirstName)
                 .HasColumnName("first_name")
                 .IsRequired()
