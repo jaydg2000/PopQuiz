@@ -1,0 +1,24 @@
+<div class="row explore-quizes align-items-end">
+  <div class="col-md-6"><h4>Explore available quizes</h4></div>
+  <div class="col-md-6">
+    <div class="search-box">
+      <form action="">
+        <input type="text" placeholder="Search..">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3" *ngFor = 'let quiz of _quizes'>
+    <app-quiz-card [quiz]="quiz"></app-quiz-card>
+  </div>
+</div>
+<div class="row explore-quizes align-items-end">
+    <div class="col-md-12"><h4>Your upcoming quizes</h4></div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-xl-3" *ngFor = 'let quiz of _quizes'>
+    <app-quiz-card [quiz]="quiz"></app-quiz-card>
+  </div>
+</div>

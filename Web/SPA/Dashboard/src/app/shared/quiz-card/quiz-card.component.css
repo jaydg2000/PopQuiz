@@ -1,0 +1,23 @@
+.quiz-title {
+  background-color: #1e7b0f;
+  color: rgb(255,255,255);
+  margin: 0px;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.quiz-description {
+  color: #165800;
+  padding:5px;
+}
+
+.quiz-button {
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

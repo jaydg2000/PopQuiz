@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Identity.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Identity.Domain.Test", "Services\PopQuiz.Service.Identity.Domain.Test\PopQuiz.Service.Identity.Domain.Test.csproj", "{E848D33A-997C-4B3B-8DEC-EF16F6D653FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopQuiz.Service.Identity.Persistence", "Services\PopQuiz.Service.Identity.Persistence\PopQuiz.Service.Identity.Persistence.csproj", "{DE0498CB-0D8E-4729-951D-9A50A954F6F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PopQuiz.Service.Identity.Persistence", "Services\PopQuiz.Service.Identity.Persistence\PopQuiz.Service.Identity.Persistence.csproj", "{DE0498CB-0D8E-4729-951D-9A50A954F6F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
